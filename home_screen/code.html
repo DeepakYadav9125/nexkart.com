@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#82db7e",
+                    "primary-fixed": "#d9e2ff",
+                    "inverse-surface": "#303030",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-primary-fixed-variant": "#004299",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb599",
+                    "secondary-container": "#fd661d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#0b6b1d",
+                    "secondary": "#a73a00",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#1f6feb",
+                    "on-primary-container": "#fefcff",
+                    "on-secondary-fixed": "#370e00",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#eae7e7",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1b1c1c",
+                    "surface-container-low": "#f6f3f2",
+                    "outline": "#727786",
+                    "tertiary-container": "#2e8534",
+                    "on-tertiary-container": "#f7fff1",
+                    "secondary-fixed": "#ffdbce",
+                    "outline-variant": "#c2c6d6",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#afc6ff",
+                    "surface-dim": "#dcd9d9",
+                    "primary": "#0056c3",
+                    "background": "#fcf9f8",
+                    "on-tertiary-fixed": "#002204",
+                    "surface-variant": "#e5e2e1",
+                    "primary-fixed-dim": "#afc6ff",
+                    "on-secondary-fixed-variant": "#7f2b00",
+                    "on-secondary-container": "#571b00",
+                    "surface-bright": "#fcf9f8",
+                    "on-tertiary-fixed-variant": "#005312",
+                    "on-surface": "#1b1c1c",
+                    "on-surface-variant": "#424754",
+                    "on-primary-fixed": "#001944",
+                    "surface-container": "#f0eded",
+                    "surface": "#fcf9f8",
+                    "tertiary-fixed": "#9df898",
+                    "surface-tint": "#0059c8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "gutter": "12px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "14px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin-mobile h-16 w-full fixed top-0 z-50 bg-primary shadow-md">
+<div class="flex items-center gap-3">
+<button class="text-on-primary hover:opacity-90 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile italic font-black text-on-primary">NexKart</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-primary hover:opacity-90 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+</div>
+</header>
+<!-- Sticky Search Bar -->
+<div class="fixed top-16 left-0 w-full z-40 bg-primary px-margin-mobile pb-3 shadow-md">
+<div class="relative flex items-center bg-surface rounded-lg px-3 py-2 shadow-inner">
+<span class="material-symbols-outlined text-outline mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md text-on-surface placeholder-on-surface-variant" placeholder="Search for Products, Brands and More" type="text"/>
+</div>
+</div>
+<main class="mt-32">
+<!-- Category Carousel -->
+<section class="py-4 bg-white">
+<div class="flex overflow-x-auto no-scrollbar gap-6 px-margin-mobile">
+<!-- Categories -->
+<div class="flex flex-col items-center min-w-[64px] gap-1">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A vibrant digital marketing illustration of a shopping bag surrounded by colorful floating geometric gift boxes. The aesthetic is clean and modern, using high-contrast corporate blue and orange highlights against a soft white background to evoke a sense of urgency and excitement for limited-time offers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDotp8AlnpBC1Z0f1f35Izo2n_w0JvuIS54lRpKoAKzkxvZPMugbuG8nGgfd7t_8PSHIpmBWhKmnFApx7oopV8gmGwYZ_XnxLl81vVwdhzOFiYEDK_lTEh60LoOsqt-qDMFKIAt7kXaB0TsjaiujGt4XmguFmt5oFE7E6VihikSd0cM_shYMssxtxytmTjJjucKV-5GMT1Ic9IUe8UvD5DDinVqHu9XMSzRj8r2rCaab90Q6LVxBwTATBmvBztIrCOz9FEArrcalvFy"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Top Offers</span>
+</div>
+<div class="flex flex-col items-center min-w-[64px] gap-1">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sleek, professional photograph of a premium smartphone with a triple-lens camera system reflecting soft studio lights. The composition is minimalist and high-end, emphasizing the metallic finish and crystal-clear display of the device, set against a subtle gray-toned architectural background to signify advanced technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpn43dewEGzJMPxiBUzEgmicqyp7DEWkEQ8I46uWFtda4i0WX95rTqMDgSYZnOQG4V0-LIxp764qrJ_e7C15ltCWfAKbQkPCjjBnTxCsvoQKdnXAe3uLV7ctwv_DhVaFPur3N9CrxY072RTLTMdSjqjHdXvbOOOrqnDPausvMjcH8QYaJnuGk1kF6_I_RSFrZAXnZ9uzjTQizq5jCnx-BmZJqzY2EUJTN-aM2lQHwt8h9MZKxRkVRLDhtDc8_Hkc-cwYvM2abb97MW"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Mobiles</span>
+</div>
+<div class="flex flex-col items-center min-w-[64px] gap-1">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylish flat-lay composition of designer fashion accessories, including a classic leather watch, a pair of elegant sunglasses, and a tailored linen shirt. The lighting is bright and warm, creating a sophisticated and trustworthy mood for a high-end shopping experience, accented with NexKart's signature blue palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACyCq1rsSdUtQhhu8qBTzB9fpvSQRpzzaV6K8pWlcmacfXrm3lSRyX-aY4ERgcH8B8JDxK3UaHX884dzt1FmbBV9m3aI_fqKchV38mfqixga4vXXRGU4xHd9dIlDL5YNuoMNv5kJizQvxJbXVCne2k0zY2zyn3UKszn5HqYPbQdn3AbxK1ihpcP15y-yFJskcvq6xOT7i5XBs0vK0qipt-Pqtx0WvJa5PDi3MrSK0vs41cWnofk9pt9IAkZMAyyAqdlIRRY3gvKOl_"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Fashion</span>
+</div>
+<div class="flex flex-col items-center min-w-[64px] gap-1">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A wide-angle shot of a modern home office desk featuring a high-resolution curved monitor, wireless headphones, and a mechanical keyboard. The scene is illuminated by soft, natural morning light, creating a clean and productive atmosphere focused on cutting-edge consumer electronics and digital efficiency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg-Nhq-ZW46d6Is0v98cn7ry_PAIzVC32TyPpSF6UmOjNQ9aV4YkVxCU1wXbLdIOo5BKq6Kedkd5pJMs-mXMgvIB1lFdPD5MyMFzglnQXn3u1G9axVUNr3QeGaP-J-1QbFTjYKpD6iPvMsNV1fgqvJ1MpBVsrIt5qObI7NQo2BwNsRy_9ybLWc4CFaascu5RxH1p7bR3Fm9ELYijFNsO2xVihsomW_kdFnAdcq8L2hh1f9gYoasESbepNJ_QBg2MLWDz_i8HmqJOHR"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Electronics</span>
+</div>
+<div class="flex flex-col items-center min-w-[64px] gap-1">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cozy and minimalist living room scene featuring a contemporary sofa with soft textured pillows and a sleek coffee table with a small ceramic plant. The lighting is diffused and warm, evoking a sense of home comfort and elegant interior design, maintaining a professional yet inviting corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwlM6rnrGXpCygTedAoakrZKHt3PDMyEDrnFQu2evVLbIaAjVwX2VMEglceFo8yRb3D-ApetgQHkdBXJJHU-I57QHTD3VRv7PLjjycqYQEIlHb5b9j-vTVlXA5W2GOkRjw48QBdIjjcJFrcUjHqa3A7zkncQwLl7WWu7vAzhkuz91nIvOJ0TgzH8yZ8eevLKJ-H-kiZQ1YCXiqF8nVFd4LcY2HhzIe6ofiEUtJZl8RMASYSkGIlmCDHIutbU-ZHMwln7ycrtV49-I9"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Home</span>
+</div>
+<div class="flex flex-col items-center min-w-[64px] gap-1">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A collection of luxury skincare products in minimalist white packaging arranged on a clean marble surface with fresh lavender sprigs. The style is bright and ethereal, using high-key lighting to emphasize purity and self-care, consistent with a modern, high-velocity e-commerce beauty section." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbsnvJRhK9Ebn8LCkgI-uafcYUH0T8deNpz4Tkwem96118bN300lJShHnrZcJ7zZd94OXN9XSarohUXqOfQoO9KzcSMny4I1YnIpUcNDwtJVlrkxgOPn8OzgTyvrZvARKk7zsS8rVo8Xoy_zoJSuQgFM9CH55H6E1W2RdpTZ9c7MJUmAft119gArAw8brNAtfxE_3i5vtCUxO-7DdBpaGClMUVH8xJX5g3oJb36G2jQ90WcV-5xIeU5v9pzRXE5DY-CR7xQaR4e-m9"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Beauty</span>
+</div>
+</div>
+</section>
+<!-- Main Banner -->
+<section class="mt-sm px-margin-mobile">
+<div class="relative w-full aspect-[21/9] rounded-xl overflow-hidden shadow-md">
+<img class="w-full h-full object-cover" data-alt="A dramatic high-energy promotional banner for a massive retail sale event. Bold 3D typography reading 'BIG BILLION DAYS' is illuminated by cinematic neon orange and blue spotlights against a dark, high-tech industrial background. The atmosphere is electric and high-contrast, designed to drive maximum conversion and user excitement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmN4jLbOKO6Jnq6lyQUXPdacwnFUfLDwyuU70Yg0T73Mg0Lz6J29bLahfg3PefZDWcDOtoVATxtW2_YJUKnnD03FsxdExzb3Lw1b5Le-8gt11lGHHcLoSG5iW9N-C83vbAxye_pxnd54zrx6IjItRSOfm-F2lZ8Z86UQjZn3j42NYd88smj-qLq--3cp80LXY_4O4S1iJLPYXpWH1TBgGluWmQVflDWw4QEF1Tqh9IvLJyDuq4bF-jF_U_Q44G_g4JJTugyirWK8Qp"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent flex flex-col justify-center p-6">
+<span class="bg-secondary text-on-secondary px-2 py-1 rounded text-label-sm w-fit mb-2">SALE NOW LIVE</span>
+<h2 class="font-display-lg text-display-lg text-white mb-2 leading-tight">BIG BILLION<br/>DAYS</h2>
+<p class="text-white/90 font-body-md">Upto 80% Off on Top Brands</p>
+</div>
+</div>
+</section>
+<!-- Deals of the Day Carousel -->
+<section class="mt-xl">
+<div class="flex justify-between items-center px-margin-mobile mb-4">
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface">Deals of the Day</h3>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-label-md">02h 45m remaining</span>
+</div>
+</div>
+<button class="bg-primary px-4 py-2 rounded text-on-primary font-label-lg shadow-sm hover:opacity-90 active:scale-95 transition-all">VIEW ALL</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-3 px-margin-mobile pb-4">
+<!-- Product Card 1 -->
+<div class="min-w-[160px] bg-white rounded-lg p-3 shadow-sm border border-outline-variant flex flex-col items-center">
+<div class="w-32 h-32 mb-3">
+<img class="w-full h-full object-contain" data-alt="A professional studio product shot of a minimalist white smartwatch with a matte finish, centered on a clean background. The image uses soft neutral lighting and subtle shadows to emphasize the watch's sleek design and premium build quality, aligning with a corporate, reliable e-commerce aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5XCJQ6_XxUEFehzNVpSQH2KJ5JX-6eT1yyb3oKERgzSe8ip8kHp665NdVzQ-yfRNYU-HnxiGiSnBNhO3SoeO_vr6zMQ0AzeuOf1Kc7lKqYg6kQMtVtGvSpfETG8mbZsMECEjiKxdoIqWukD94BosCQ-yl5XaGhXIRZhPvhT0puJ-mrO7hpLHVkjquChBHn5Om1R-i6p_l5__bvreKPhCs8z2PziRK3mvCexIzgq9zVEAfyhU9HlzU0L7NcjT40JCqosKFPCtg0rca"/>
+</div>
+<div class="w-full">
+<h4 class="text-body-md font-medium text-on-surface line-clamp-1">Pro Watch Series 8</h4>
+<div class="flex items-center gap-1 mt-1">
+<span class="bg-tertiary text-on-tertiary text-label-sm px-1.5 py-0.5 rounded flex items-center">4.5 <span class="material-symbols-outlined text-[10px] ml-0.5" style="font-variation-settings: 'FILL' 1;">star</span></span>
+<span class="text-on-surface-variant text-label-sm">(1,245)</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-bold text-on-surface text-body-md">₹19,999</span>
+<span class="text-outline text-label-md line-through">₹24,999</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">20% Off</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="min-w-[160px] bg-white rounded-lg p-3 shadow-sm border border-outline-variant flex flex-col items-center">
+<div class="w-32 h-32 mb-3">
+<img class="w-full h-full object-contain" data-alt="A premium pair of over-ear wireless headphones in matte black, photographed from an artistic angle with soft highlighting on the earcups. The lighting is professional and high-contrast, conveying a sense of superior sound quality and durable construction for a demanding corporate customer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjZ1-D5YImkvuJtOM0JxozIesMbmrELiWCi_8ZKFtD-1X49Aeo1DpDVUazp90zxV6GuP3QepebHSsLBugVm57_ZvgNSNP81xkGpAwzNGBDBMpSD9S-b0pprNLjbAwgKx5zmAu0keFhxyNjo56wchq9G6A5F8TWYMR5Og8icwRCO9RpYVxr1LeU29gpaVTt8UtROiUE3PmSv0ML34HTCe7J0KPrgChUGgojJroV2Dp9GN_18BEoP_s7AFEqighOtV8LHYmpRg4r8Nv1"/>
+</div>
+<div class="w-full">
+<h4 class="text-body-md font-medium text-on-surface line-clamp-1">Noise Cancelling Pro</h4>
+<div class="flex items-center gap-1 mt-1">
+<span class="bg-tertiary text-on-tertiary text-label-sm px-1.5 py-0.5 rounded flex items-center">4.8 <span class="material-symbols-outlined text-[10px] ml-0.5" style="font-variation-settings: 'FILL' 1;">star</span></span>
+<span class="text-on-surface-variant text-label-sm">(890)</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-bold text-on-surface text-body-md">₹14,499</span>
+<span class="text-outline text-label-md line-through">₹29,999</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">51% Off</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="min-w-[160px] bg-white rounded-lg p-3 shadow-sm border border-outline-variant flex flex-col items-center">
+<div class="w-32 h-32 mb-3">
+<img class="w-full h-full object-contain" data-alt="A sleek analog wrist watch with a brown leather strap and a minimalist watch face, placed elegantly on a dark wood surface. The image is warm and inviting, using soft shadows and natural light to showcase the craftsmanship and classic style, perfect for a high-end fashion e-commerce portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAkCs3HMg2W6SJ3AjWsYODyYqK4iQNvVUuBbvnwbQj8h8AEQgB2UX003VVArH9BSL_IG289_nKjtvdV2ZlAcV8029LIs7LR9XRNIGGuVNXVzGUwYoSTosoVA_mc1YvaJFR-ysL9CTT_WMfYWsLCguvaVttOc8MRDIEd1N6h4eqGsQinkdcn6W3XBrk7hVaO1ROHdziFW-JiFLNA2vHaatU-NVeQJQ7CQoi8VqXnzQFK5IM9M1K-0qrLulZ1ll0gIalA89N_N0hHbrm"/>
+</div>
+<div class="w-full">
+<h4 class="text-body-md font-medium text-on-surface line-clamp-1">Classic Leather Lux</h4>
+<div class="flex items-center gap-1 mt-1">
+<span class="bg-tertiary text-on-tertiary text-label-sm px-1.5 py-0.5 rounded flex items-center">4.3 <span class="material-symbols-outlined text-[10px] ml-0.5" style="font-variation-settings: 'FILL' 1;">star</span></span>
+<span class="text-on-surface-variant text-label-sm">(2,110)</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="font-bold text-on-surface text-body-md">₹4,999</span>
+<span class="text-outline text-label-md line-through">₹8,999</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">44% Off</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Best of Electronics Bento Grid Inspiration -->
+<section class="mt-lg px-margin-mobile">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Best of Electronics</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-primary-container/10 p-4 rounded-xl border border-primary-container/20 flex flex-col gap-2">
+<div class="h-32 w-full overflow-hidden rounded-lg bg-white p-2">
+<img class="w-full h-full object-contain" data-alt="A top-down view of a sleek, open aluminum laptop resting on a clean white desk next to a modern smartphone. The lighting is bright and professional, highlighting the thin profile and metallic texture of the hardware, creating an atmosphere of productivity and technological advancement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwEqbDTApI2-rnbbCHZkySHmSwDJOuO7Q5DhcwKEjxCRG7xMyo951CF2oh1GRQtOYtqlnso2tKbYboZMTqD8cMp2QwhB-s1ewX0d0hg7DqTVCmMaX31KKWRS2YjVgzcR408qxrIWLFjY11ZPnwebufgqWOyDGC6X632hgGWolf-KHkbti-FSbhyf334jgGmIkgKsSuWLbdJfYEpczsQINrdy64ZWz5Se-ZYN99PBHb74iWWq5z_NG9nzLLHn_Y0TSbOxLVcb2GhpP6"/>
+</div>
+<span class="text-label-md font-bold text-primary">MacBook Air</span>
+<span class="text-body-md text-on-surface">From ₹69,990</span>
+</div>
+<div class="bg-secondary-container/10 p-4 rounded-xl border border-secondary-container/20 flex flex-col gap-2">
+<div class="h-32 w-full overflow-hidden rounded-lg bg-white p-2">
+<img class="w-full h-full object-contain" data-alt="A modern tablet with a vibrant graphic design displayed on its screen, resting next to a digital stylus on a light gray architectural background. The composition is clean and focused, using high-key lighting to emphasize the vivid colors and precision of the device for creative professionals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1ax0gUjLzL4kH7pUWqaVKUN8t2DnRsmxXSetmOqOTm8ZHFsRtxzv9mFM1hzRFFibSua0119dvNmcyyIrknGfQs4mt1Wxs3jaqlci2RZqjUps1G6jXSeeqTwjzaQccv0m4tLOAWVoTyVX_0JCaOrM1b4rCpyU6eyaKzzpPCtGls-enpR0yQ-NI_1B9OIOq7A0ldh91xdS3eoa2y0YGBEy46RVGXr5YOdCvmuEGIteoKgQP4vljFClqSbE3EfPpcgtg6SG5Lyqopv1Y"/>
+</div>
+<span class="text-label-md font-bold text-secondary">Tablets</span>
+<span class="text-body-md text-on-surface">Upto 40% Off</span>
+</div>
+<div class="col-span-2 bg-tertiary-container/10 p-4 rounded-xl border border-tertiary-container/20 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md text-tertiary">Smart Appliances</span>
+<p class="text-body-md text-on-surface-variant">Revolutionize your home</p>
+<button class="mt-2 bg-tertiary text-on-tertiary px-4 py-1 rounded-full text-label-md w-fit">Explore</button>
+</div>
+<div class="w-32 h-24 overflow-hidden rounded-lg bg-white p-2">
+<img class="w-full h-full object-contain" data-alt="A futuristic kitchen setting featuring a smart, touch-screen refrigerator and an integrated coffee machine. The scene is lit by soft, integrated LED strips, creating a sophisticated and technologically integrated home environment that emphasizes luxury and daily efficiency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldXYo7ScKwcJuVS25emOJWj61EWG78_35aUVHNrTgYNXjahBWlk1qojw0T-inB47plR8bKjz_K04oSPYD9k83ncewKHDNLCo2JTi7dXnR3L529RThHLkLSp-fcJhxOPqaVIGWjoeKuFDc1kLoUV2KW9lxnSp68GvHILlaTHqkrI66ME3RUj7MxQMIEKEO8OsEAZKhxVw90ampH31qoMS0kXRtatiB1G6GGDSsJ8VY0XS3o4qUjIVo1awxjtVM4TKsVPenkikBYVyF"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Promotional Cards -->
+<section class="mt-xl px-margin-mobile mb-4">
+<div class="bg-surface-container-high rounded-xl p-6 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">workspace_premium</span>
+<h4 class="font-headline-md text-headline-md text-on-surface">NexKart Plus</h4>
+<p class="text-body-md text-on-surface-variant mb-4">Get free delivery and early access to sales.</p>
+<button class="bg-on-surface text-surface px-6 py-2 rounded-full font-label-lg hover:opacity-90 active:scale-95 transition-all">JOIN NOW</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center bg-surface py-2 pb-safe px-4 shadow-lg border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-primary font-bold active-nav" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-md text-label-md">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md">Cart</span>
+</a>
+</nav>
+<script>
+        // Simple scroll interaction for header transparency or shadow
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Toggle search bar elevation on focus
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+        
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.remove('shadow-inner');
+            searchContainer.classList.add('ring-2', 'ring-primary-fixed', 'shadow-md');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.add('shadow-inner');
+            searchContainer.classList.remove('ring-2', 'ring-primary-fixed', 'shadow-md');
+        });
+
+        // Simple carousel snap logic can be added here if needed for desktop mouse interactions
+    </script>
+</body></html>

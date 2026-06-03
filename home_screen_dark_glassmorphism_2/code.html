@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexKart - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #40493d;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Ambient Animated Background */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: linear-gradient(-45deg, #131313, #1c1b1b, #0e0e0e, #131313);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        /* Glass Interaction & Animations */
+        .glass-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .glass-card:active {
+            transform: scale(0.98);
+        }
+
+        /* Shimmer Effect for Buttons */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+        .btn-shimmer:hover::after {
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Entrance Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ambient-bg, .btn-shimmer::after, .reveal {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-high": "#2a2a2a",
+                "inverse-primary": "#106d20",
+                "on-background": "#e5e2e1",
+                "outline": "#899485",
+                "tertiary-fixed-dim": "#ffb1c8",
+                "on-primary-container": "#003207",
+                "error-container": "#93000a",
+                "surface-container": "#201f1f",
+                "inverse-surface": "#e5e2e1",
+                "surface-tint": "#82db7e",
+                "tertiary": "#ffb1c8",
+                "tertiary-container": "#df6a94",
+                "outline-variant": "#40493d",
+                "primary": "#82db7e",
+                "error": "#ffb4ab",
+                "primary-fixed-dim": "#82db7e",
+                "on-secondary-container": "#82c985",
+                "surface-container-highest": "#353534",
+                "secondary": "#90d792",
+                "on-tertiary-container": "#58002c",
+                "on-surface-variant": "#bfcab9",
+                "on-surface": "#e5e2e1",
+                "background": "#131313",
+                "on-primary-fixed": "#002204",
+                "surface-bright": "#393939",
+                "secondary-fixed-dim": "#90d792",
+                "surface": "#131313",
+                "on-tertiary": "#640333",
+                "on-error": "#690005",
+                "surface-variant": "#353534",
+                "primary-container": "#4da24e",
+                "secondary-fixed": "#abf4ac",
+                "secondary-container": "#0b551f",
+                "surface-container-lowest": "#0e0e0e",
+                "primary-fixed": "#9df898",
+                "on-error-container": "#ffdad6",
+                "surface-dim": "#131313",
+                "surface-container-low": "#1c1b1b",
+                "on-secondary": "#003911",
+                "on-tertiary-fixed": "#3e001d",
+                "on-secondary-fixed-variant": "#07521d",
+                "on-primary-fixed-variant": "#005312",
+                "inverse-on-surface": "#313030",
+                "on-secondary-fixed": "#002107",
+                "on-primary": "#00390a",
+                "on-tertiary-fixed-variant": "#822049",
+                "tertiary-fixed": "#ffd9e2"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "margin-mobile": "16px",
+                "md": "24px",
+                "xs": "4px",
+                "margin-desktop": "40px",
+                "gutter": "24px",
+                "sm": "12px",
+                "xl": "80px",
+                "lg": "48px",
+                "base": "8px"
+        },
+        "fontFamily": {
+                "headline-lg": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "body-md": ["Inter"],
+                "label-caps": ["JetBrains Mono"],
+                "headline-xl": ["Hanken Grotesk"],
+                "body-sm": ["Inter"]
+        },
+        "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden">
+<div class="ambient-bg"></div>
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 border-b flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base bg-surface/70 backdrop-blur-md border-outline-variant/10">
+<div class="flex items-center gap-sm">
+<button class="p-xs text-primary hover:bg-surface-variant transition-colors active:scale-95 duration-150 rounded-lg glass-card">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg font-bold text-primary">NexKart</span>
+</div>
+<div class="hidden md:flex flex-1 max-w-xl mx-lg">
+<div class="w-full relative group">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-md py-xs focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-on-surface placeholder-on-surface-variant/50" placeholder="Search for products, brands and more..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-2.5 text-on-surface-variant" data-icon="search">search</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="hidden md:flex items-center gap-xs px-sm py-xs text-on-surface-variant hover:bg-surface-variant transition-colors rounded-xl glass-card">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Account</span>
+</button>
+<button class="p-xs text-primary hover:bg-surface-variant transition-colors active:scale-95 duration-150 relative rounded-lg glass-card">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</button>
+</div>
+</header>
+<main class="pb-xl md:pb-margin-desktop">
+<!-- Hero Banner -->
+<section class="px-margin-mobile md:px-margin-desktop py-md reveal active" style="transition-delay: 0.1s;">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter min-h-[400px]">
+<div class="md:col-span-8 relative rounded-xl overflow-hidden bg-primary-container group glass-card">
+<div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+<img alt="Electronics" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO2IeVsde3Np9R5zjsvZpoX4Gq_Pc6MgQX7nKbS_rqEQD7dhdxmx4qGEENKTM1gOPRB4RUV08-GFJKBcoUFRYRjEHAiAH1yTZcHGXJhJCrWtOXUszZFYlITTUcVHT3_nQ1JQyi-0GOU3Q5BHiY5l32ENjbQ6t_-GadvQKhLk8ci_aFJrakAeirSGlMIxypAGQIWwlzAOAa64NjaLVGDrrpno2fdH4C3oJ56K2-FAyToII4w-VyFL2p3MoIdKW06gsLKfBiEt3caPE3"/>
+<div class="relative z-20 h-full flex flex-col justify-center p-md md:p-lg text-white">
+<span class="font-label-caps text-label-caps bg-primary text-on-primary px-sm py-xs rounded-full w-fit mb-base uppercase tracking-widest">Summer Sale</span>
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl mb-sm max-w-md">Upgrade Your Workspace.</h1>
+<p class="font-body-md text-body-md mb-md max-w-sm opacity-90">Experience the future of productivity with our latest Electronics collection. Up to 40% OFF.</p>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold px-lg py-sm rounded-lg transition-all active:scale-95 w-fit uppercase text-label-caps btn-shimmer">Shop Now</button>
+</div>
+</div>
+<div class="md:col-span-4 grid grid-rows-2 gap-gutter">
+<div class="relative rounded-xl overflow-hidden bg-surface-container group border border-outline-variant glass-card">
+<img alt="Fashion" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAioZpPh9cRs40iGYp6bg_JDZSJXFJoLhtL4148VSfuzZn7qbBenZ_A9uwGJ4pqTXNyWeMTd_UiS7NiwjhgzbPPLzTZeb2Nf7VqWUAKDdBxz1xe7i1kmt3U6Bs-IktsMAII5hNLtpxQ4PTwm36DSikkw2kF9NwA6l87n2BdqcL3qxuvTV45G7jL--K9DVWOWX70wLQrIfFCPjVkvvDm84xzDYauQGaxBgsNA5TnjbrA7d0SO0SdshhflzhrhOwvEpbQLCX19g_MuwVu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile">New Fashion</h3>
+<p class="font-body-sm text-body-sm opacity-90">The Summer Collection</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden bg-secondary-container group border border-outline-variant glass-card">
+<img alt="Home" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsCSNxshKdKxF-1Sly7I8WfBaNWmcmSp75zkhcgEl8CSUEbGjFggqSQ2BzTlerSgqFBXZo4wB3zhTKuC2sH_j3tbR4rpshsRZoReyYimL1YmyMNpiSfJ-xuV4iXt8hEQ-NI_VLuYEYo5zJ8Od8vPAPmQe_udUfoaBr3pz9lIR8lwW-L3h5UpeqQ5e0OgtreH3oKEO5zs2G3yWBbEiRNdlQA4wPWuxGTrviAgBIE22s1spI6Hul-KSBLmD9MCmsso2NssnYg3Os_t-g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile">Smart Home</h3>
+<p class="font-body-sm text-body-sm opacity-90">Essentials for Living</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Categories -->
+<section class="px-margin-mobile md:px-margin-desktop py-md reveal">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-md flex items-center gap-sm text-on-surface">
+                Shop by Categories
+                <div class="h-1 flex-1 bg-surface-container-highest rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-24"></div>
+</div>
+</h2>
+<div class="flex gap-md overflow-x-auto pb-sm no-scrollbar">
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer glass-card p-xs rounded-xl">
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant group-hover:bg-primary-container transition-all group-hover:border-primary">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container text-3xl" data-icon="devices">devices</span>
+</div>
+<span class="font-label-caps text-label-caps mt-sm text-on-surface-variant group-hover:text-primary transition-colors uppercase">Electronics</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer glass-card p-xs rounded-xl">
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant group-hover:bg-primary-container transition-all group-hover:border-primary">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container text-3xl" data-icon="checkroom">checkroom</span>
+</div>
+<span class="font-label-caps text-label-caps mt-sm text-on-surface-variant group-hover:text-primary transition-colors uppercase">Fashion</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer glass-card p-xs rounded-xl">
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant group-hover:bg-primary-container transition-all group-hover:border-primary">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container text-3xl" data-icon="home_work">home_work</span>
+</div>
+<span class="font-label-caps text-label-caps mt-sm text-on-surface-variant group-hover:text-primary transition-colors uppercase">Home &amp; Kitchen</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer glass-card p-xs rounded-xl">
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant group-hover:bg-primary-container transition-all group-hover:border-primary">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container text-3xl" data-icon="bolt">bolt</span>
+</div>
+<span class="font-label-caps text-label-caps mt-sm text-on-surface-variant group-hover:text-primary transition-colors uppercase">Daily Deals</span>
+</div>
+</div>
+</section>
+<!-- Featured Products -->
+<section class="px-margin-mobile md:px-margin-desktop py-md reveal">
+<div class="flex justify-between items-end mb-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Featured Selection</h2>
+<p class="text-on-surface-variant font-body-sm">Handpicked quality products for your lifestyle.</p>
+</div>
+<button class="text-primary font-label-caps uppercase hover:underline decoration-2 underline-offset-4 transition-all">View All Products</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Product 1 -->
+<div class="bg-surface-container-lowest/50 backdrop-blur-sm border border-outline-variant rounded-xl overflow-hidden group hover:border-primary transition-all flex flex-col h-full glass-card">
+<div class="relative h-48 bg-surface-container overflow-hidden">
+<img alt="Premium Watch" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtC7ai_xT28GI3fBnEx0DQdoXxMFmJB-SFY9hZ9Mf5-hofsTUipfn7g0N6VPVsLMmjRy7h9bIreZ_CW9PWWx4lX7joIvFpjmsXF8qioKnNiMH96I0_H-wZoD1aYO9v8svVGLGC9SIoHB2rBc4dRGhsO0RkN52dOPPbK8t8he0BRZJKro_BteMJwIScTDSw8pCYGUbYL0dUR7oE4Dw2u9wQQA3uYrXbX9X461rSmo5oaSXZ9Vmbk4rnQXOctkD7VmsrmrlwE8K0yNbi"/>
+<div class="absolute top-2 right-2 flex flex-col gap-xs">
+<button class="w-8 h-8 rounded-full bg-surface-container/80 backdrop-blur-sm flex items-center justify-center text-on-surface hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-xs translate-y-full group-hover:translate-y-0 transition-transform bg-primary text-on-primary text-center font-label-caps uppercase cursor-pointer btn-shimmer">
+                            Add to Cart
+                        </div>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-on-surface-variant font-label-caps uppercase text-[10px]">Lifestyle</span>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] ml-xs font-bold">4.8</span>
+</div>
+</div>
+<h4 class="font-body-md font-semibold text-on-surface mb-xs line-clamp-1">Elite Minimalist Watch</h4>
+<div class="mt-auto flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-primary">$199.00</span>
+<span class="text-on-surface-variant line-through text-[12px]">$249.00</span>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-surface-container-lowest/50 backdrop-blur-sm border border-outline-variant rounded-xl overflow-hidden group hover:border-primary transition-all flex flex-col h-full glass-card">
+<div class="relative h-48 bg-surface-container overflow-hidden">
+<img alt="Wireless Headphones" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU7NMEeHA4zCu09Lv2FhzZejbiziTiNWZ1rUxmId6NKgaifoD6bYtiO-kPfEh0DrJXlAEyo_EwiXrAq-7WUBOi5Lc2VFNCowqw0oXTMMW-rz0lTGXmziUX2BlWFSTAVTa4-anI_omEBW8M0yGkeq4Z_71bQovx4ANuKNTTUyBwHx5U8ElMGRUdDNeite0ev8zTKhOV7Y_h_vjndTEtA3IR3Y3k31M53_ZwoGhmY3jSIBlv7jPKCgk3VxxEJc0t1__Ws2BZ7UaDGLSt"/>
+<div class="absolute top-2 right-2">
+<span class="bg-error-container text-on-error-container text-[10px] font-bold px-xs py-[2px] rounded uppercase">20% Off</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-xs translate-y-full group-hover:translate-y-0 transition-transform bg-primary text-on-primary text-center font-label-caps uppercase cursor-pointer btn-shimmer">
+                            Add to Cart
+                        </div>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-on-surface-variant font-label-caps uppercase text-[10px]">Electronics</span>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] ml-xs font-bold">4.9</span>
+</div>
+</div>
+<h4 class="font-body-md font-semibold text-on-surface mb-xs line-clamp-1">Sonic-X Headphones</h4>
+<div class="mt-auto flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-primary">$159.20</span>
+<span class="text-on-surface-variant line-through text-[12px]">$199.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-xl px-margin-mobile border-t md:hidden bg-surface/70 backdrop-blur-md border-outline-variant/10">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-md py-xs active:scale-90 duration-200 glass-card" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs hover:bg-surface-variant active:scale-90 duration-200 glass-card" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-caps text-label-caps">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs hover:bg-surface-variant active:scale-90 duration-200 relative glass-card" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-caps text-label-caps">Cart</span>
+<span class="absolute top-2 right-4 bg-primary text-on-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs hover:bg-surface-variant active:scale-90 duration-200 glass-card" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Account</span>
+</a>
+</nav>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 bg-primary text-on-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-40 group btn-shimmer">
+<span class="material-symbols-outlined text-3xl" data-icon="chat">chat</span>
+<span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface px-sm py-xs rounded text-body-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Contact Support</span>
+</button>
+<script>
+    // Scroll Reveal Effect
+    const reveal = () => {
+        const reveals = document.querySelectorAll('.reveal');
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add('active');
+            }
+        }
+    }
+    window.addEventListener('scroll', reveal);
+    
+    // Initial check on load
+    reveal();
+
+    // Micro-interaction for search bar
+    const searchInput = document.querySelector('input[type="text"]');
+    if (searchInput) {
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    }
+
+    // Gentle parallax for hero
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroImg = document.querySelector('.group img');
+        if (heroImg) {
+            heroImg.style.transform = `translateY(${scrolled * 0.05}px) scale(1.05)`;
+        }
+    });
+
+    // Staggered animation for list items if needed
+    document.querySelectorAll('.glass-card').forEach((el, index) => {
+        if (!el.parentElement.classList.contains('reveal')) {
+             el.style.animationDelay = `${index * 0.05}s`;
+        }
+    });
+</script>
+</body></html>

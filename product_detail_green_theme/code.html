@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexKart | High-Performance Smartphone</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#c7dde9",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb865",
+                        "surface": "#f3faff",
+                        "surface-container": "#dbf1fe",
+                        "background": "#f3faff",
+                        "tertiary": "#845000",
+                        "surface-variant": "#cfe6f2",
+                        "tertiary-fixed": "#ffddba",
+                        "on-tertiary-fixed-variant": "#663d00",
+                        "on-primary-fixed-variant": "#005312",
+                        "surface-container-highest": "#cfe6f2",
+                        "primary": "#0b6b1d",
+                        "inverse-primary": "#82db7e",
+                        "secondary-fixed": "#d4e3ff",
+                        "tertiary-container": "#a56600",
+                        "on-secondary-fixed": "#001c3a",
+                        "secondary-fixed-dim": "#a5c8ff",
+                        "on-primary-container": "#f7fff1",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2e8534",
+                        "on-surface-variant": "#40493d",
+                        "surface-bright": "#f3faff",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#e6f6ff",
+                        "on-tertiary-fixed": "#2b1700",
+                        "on-secondary-container": "#003567",
+                        "primary-fixed": "#9df898",
+                        "primary-fixed-dim": "#82db7e",
+                        "outline": "#707a6c",
+                        "surface-tint": "#106d20",
+                        "on-primary-fixed": "#002204",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-container": "#54a0fe",
+                        "inverse-surface": "#1e333c",
+                        "on-background": "#071e27",
+                        "on-secondary-fixed-variant": "#004786",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#071e27",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#005faf",
+                        "surface-container-high": "#d5ecf8",
+                        "inverse-on-surface": "#dff4ff",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#bfcab9",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-[60] bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base">
+<div class="flex items-center gap-base">
+<button class="p-xs text-primary hover:bg-surface-variant transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">NexKart</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-xs text-on-surface-variant hover:bg-surface-variant transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-xs text-primary hover:bg-surface-variant transition-colors active:scale-95 duration-150 relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-error text-on-error text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</button>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-md lg:py-xl flex flex-col gap-lg mb-xl">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs text-on-surface-variant font-label-md">
+<span>Home</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span>Electronics</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span>Smartphones</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">NexGen Phone Pro</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg lg:items-start">
+<!-- Product Gallery (Bento Style) -->
+<div class="lg:col-span-7 grid grid-cols-4 gap-base md:gap-sm h-fit">
+<div class="col-span-4 rounded-xl overflow-hidden border border-outline-variant bg-surface-container-lowest group cursor-zoom-in">
+<img alt="NexGen Phone Pro Front View" class="w-full h-auto aspect-square object-contain transition-transform duration-500 group-hover:scale-105" data-alt="A professional studio product photograph of a sleek, high-performance emerald green smartphone with a ceramic finish. The device is positioned at an angle to showcase its ultra-thin bezels and triple-lens camera array. The lighting is high-key and professional, using soft shadows to highlight the premium glass texture against a clean, light mode corporate background. The overall aesthetic is one of technological precision and minimalist luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3xwam4wuJ_oOqJM8kzIBMz8w-ZpMNGBxmKOxvlJz3MoNiIyk9ZtCD1nhjlHqpyuYK--FI7CLtzE1wMRcJ8Dc1q3J0xkYXj8RdyBKQgMsZrD9chs1qlrt30no4gs8f-m4XqFPVbRjpKabatchZYiSrt0pz6aJakokHqQ3uNjEq_3SjtHsXzzUhSGR6io-wvDmJbT44BqfVnzOY_cpaDM_mon8lH8kNyAYS_fU1U1xW2No2OqDDK-of7-5wuBtCmhhJO20J3ZLjqLcd"/>
+</div>
+<div class="col-span-1 aspect-square rounded-xl overflow-hidden border border-outline-variant bg-white p-xs cursor-pointer hover:border-primary transition-all">
+<img alt="Side View" class="w-full h-full object-cover rounded-lg" data-alt="Close-up detail of a premium smartphone's side profile, showing a brushed titanium frame and haptic buttons. The surface is polished and reflects a soft green light, consistent with a high-end corporate brand identity. Soft ambient lighting creates a professional tech atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL-OE57rHh9S4lpfOefChJ3Vb53bPYZ0O4etudSwswKgcBGXty_aMCPGrz_YFDi9H1fKUAT4w1wCppNwnvguymqpga0MdyB56w9lVW_iU_WFhKMtnT7PQuOpJ3ujk7pySuWyMlx6zYCJCZOT9mt3iNe36nYJzbyAuwi_aYTwN3BK7rdj9bAVpFvucgb_AyO76ggUhV6USwNUlU78y8Pk8uIHNxIKygGRDL4KeNlkRYLixFghPX2bkv40idjfu7H8oxgU8jw9BAgoMI"/>
+</div>
+<div class="col-span-1 aspect-square rounded-xl overflow-hidden border border-outline-variant bg-white p-xs cursor-pointer hover:border-primary transition-all">
+<img alt="Camera Module" class="w-full h-full object-cover rounded-lg" data-alt="A macro shot of a smartphone camera module with three precision lenses. The glass is crystal clear, reflecting a bright, modern studio environment. The color palette is dominated by neutral greys and a subtle green metallic sheen, emphasizing performance and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG4VBbz-A2zmZB0rZ7te30uFT65kzASEB2gSZIBuL1RQ0U3Vb6QOxbg_mrPxWPW6yI2h9XegS4i8hxyHWJCiQa38Nf7G8PTm6TWAFJxKpfvTFUCobAf-DL-nLtKIscuibChf5cOmx5Bb98njWhe8FyMkktmRr_V3FSzXkDJkSzXJWkce8vKnpjmlN1L_WLJG7FlCtY_JB3zuR31v963Wb5Ia803eF82W4QEoKqit8TNV27i0_4aIkD441SHIf_yqFbmr6eLLlJ7zNS"/>
+</div>
+<div class="col-span-1 aspect-square rounded-xl overflow-hidden border border-outline-variant bg-white p-xs cursor-pointer hover:border-primary transition-all">
+<img alt="Back View" class="w-full h-full object-cover rounded-lg" data-alt="The rear view of a high-end mobile device featuring a matte emerald green glass back. The logo is discreetly placed, and the light catches the curved edges of the chassis. The background is a soft, out-of-focus tech office setting, reinforcing a professional utility vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd23pyBdPUThpU8qXvJzZgTLDI9MAP40jR_AH3mrqYw2xkr-M56FbYImveJ0ll6BmopSabQOs5KdjzospHtmqG55cEYHAIGtqTtlBnZqSyqkifW5G6_dBStUJGImhknpdVZJcrFMd8sI1roKlgXEVKkwz1RxyLfkagoy_QsKdWxzy92i6WtrET8bH2h7e-_A3BwjhsAemuhL5s2lOdiOM-ENCkbHfs03m-wnCdrSlhAVQR7UKxtRpYF38C3PbEfMGr479n4mxZMV8l"/>
+</div>
+<div class="col-span-1 aspect-square rounded-xl overflow-hidden border border-outline-variant bg-white p-xs cursor-pointer hover:border-primary transition-all relative">
+<img alt="Lifestyle View" class="w-full h-full object-cover rounded-lg blur-sm" data-alt="A dynamic shot of a smartphone being held in a professional workspace, showing the bright, high-resolution OLED display with vibrant colors. The lighting is natural yet crisp, highlighting the device's usability in a modern corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2j3bReOJR2aQO-Rctkh-Bs6TyVzS1IS7pc-oL_W_O-xuHN1_y2JSvCx4V0q-e6LhYB8O8bBVb5-r3UDyJR0Oum2x5MXb_LIOIVqKhO1RdmllO5JwQJ-mYcA0V6YlQXi3FuSd6GDgBMhuouIBRX7K75n1KcloHlO3yFo2PHXIs9gmdCixk4ZhXxtFPo1UiCm5RfblIDMA_swW4pLtjTNY8Rgw0m2XL4VmBvDNaWkcXJpACyRhpBheL_nSqB_owUlIAyRhIUAxmQbxE"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/40 text-white font-bold text-headline-lg-mobile rounded-lg">
+                        +2
+                    </div>
+</div>
+</div>
+<!-- Product Details -->
+<div class="lg:col-span-5 flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<span class="text-primary font-label-md tracking-widest uppercase">NexKart Signature Edition</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">NexGen Phone Pro Titanium</h2>
+<div class="flex items-center gap-sm">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined !text-md" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined !text-md" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined !text-md" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined !text-md" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined !text-md" data-icon="star_half">star_half</span>
+</div>
+<span class="text-on-surface-variant font-body-sm">(1,248 Reviews)</span>
+</div>
+</div>
+<!-- Pricing -->
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant flex flex-col gap-xs">
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-primary">$999.00</span>
+<span class="text-on-surface-variant line-through font-body-md">$1,199.00</span>
+<span class="bg-primary-container text-on-primary-container px-xs py-[2px] rounded text-label-md">15% OFF</span>
+</div>
+<p class="text-on-surface-variant font-body-sm">Inclusive of all taxes. EMI starts at $48/mo.</p>
+</div>
+<!-- Variants -->
+<div class="flex flex-col gap-sm">
+<h3 class="font-label-md text-on-surface uppercase tracking-wide">Select Finish</h3>
+<div class="flex gap-sm">
+<button class="w-10 h-10 rounded-full border-2 border-primary p-[2px] ring-2 ring-surface ring-inset">
+<div class="w-full h-full rounded-full bg-primary"></div>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant p-[2px] hover:border-primary transition-all">
+<div class="w-full h-full rounded-full bg-[#1e1e1e]"></div>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant p-[2px] hover:border-primary transition-all">
+<div class="w-full h-full rounded-full bg-[#e3e4e5]"></div>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<h3 class="font-label-md text-on-surface uppercase tracking-wide">Storage Capacity</h3>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-sm border-2 border-primary text-primary font-bold rounded-lg bg-primary/5 transition-all">128GB</button>
+<button class="px-md py-sm border border-outline-variant text-on-surface-variant rounded-lg hover:border-primary transition-all">256GB</button>
+<button class="px-md py-sm border border-outline-variant text-on-surface-variant rounded-lg hover:border-primary transition-all">512GB</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-sm pt-md border-t border-outline-variant mt-sm">
+<button class="flex-1 bg-primary text-white font-bold py-md rounded-lg hover:brightness-110 active:scale-95 transition-all uppercase flex items-center justify-center gap-base shadow-sm">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                        Buy Now
+                    </button>
+<button class="flex-1 border-2 border-primary text-primary font-bold py-md rounded-lg hover:bg-primary/5 active:scale-95 transition-all uppercase flex items-center justify-center gap-base">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+<!-- Trust Badges -->
+<div class="grid grid-cols-2 gap-sm mt-sm">
+<div class="flex items-center gap-xs p-xs border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="font-body-sm text-on-surface-variant">Free Express Delivery</span>
+</div>
+<div class="flex items-center gap-xs p-xs border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<span class="font-body-sm text-on-surface-variant">2-Year Warranty</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Specifications -->
+<section class="mt-lg">
+<h2 class="font-headline-lg text-headline-lg border-b-4 border-primary w-fit pb-xs mb-md">Technical Specifications</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Processor -->
+<div class="p-md bg-white border border-outline-variant rounded-xl flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-primary">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<h4 class="font-bold">Performance</h4>
+</div>
+<ul class="flex flex-col gap-xs text-body-sm text-on-surface-variant">
+<li class="flex justify-between border-b border-outline-variant py-xs">
+<span>Chipset</span>
+<span class="font-bold text-on-surface">Titanium A18 Pro</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant py-xs">
+<span>Core Count</span>
+<span class="font-bold text-on-surface">12-Core Hybrid</span>
+</li>
+<li class="flex justify-between py-xs">
+<span>RAM</span>
+<span class="font-bold text-on-surface">12GB LPDDR5X</span>
+</li>
+</ul>
+</div>
+<!-- Camera -->
+<div class="p-md bg-white border border-outline-variant rounded-xl flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-primary">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+<h4 class="font-bold">Camera System</h4>
+</div>
+<ul class="flex flex-col gap-xs text-body-sm text-on-surface-variant">
+<li class="flex justify-between border-b border-outline-variant py-xs">
+<span>Main</span>
+<span class="font-bold text-on-surface">50MP Ultra-OIS</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant py-xs">
+<span>Ultrawide</span>
+<span class="font-bold text-on-surface">12MP 120° FOV</span>
+</li>
+<li class="flex justify-between py-xs">
+<span>Video</span>
+<span class="font-bold text-on-surface">8K @ 60fps</span>
+</li>
+</ul>
+</div>
+<!-- Battery -->
+<div class="p-md bg-white border border-outline-variant rounded-xl flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-primary">
+<span class="material-symbols-outlined" data-icon="battery_charging_full">battery_charging_full</span>
+<h4 class="font-bold">Power</h4>
+</div>
+<ul class="flex flex-col gap-xs text-body-sm text-on-surface-variant">
+<li class="flex justify-between border-b border-outline-variant py-xs">
+<span>Capacity</span>
+<span class="font-bold text-on-surface">5,000 mAh</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant py-xs">
+<span>Wired</span>
+<span class="font-bold text-on-surface">120W HyperCharge</span>
+</li>
+<li class="flex justify-between py-xs">
+<span>Wireless</span>
+<span class="font-bold text-on-surface">50W NexCharge</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Feature Showcase -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md items-center">
+<div class="rounded-2xl overflow-hidden shadow-sm border border-outline-variant">
+<img alt="Performance Showcase" class="w-full h-80 object-cover" data-alt="A cinematic, low-angle shot of the NexGen Phone Pro's display showing an immersive 3D gaming environment with rich contrast and deep greens. The smartphone sits on a dark, reflective surface that subtly mirrors the screen's glow. The background is a sophisticated, dark-themed tech studio, highlighting the device's screen quality and high-performance capabilities in professional high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt-wCKSietxz1c4xvnUSIJZBQ1hEBaGh46uVoEwJ0daAX_itURQUL93VlOuUpcMz2fEhcEUqHKu93fVd3xekSx4YlwKxk6jQWOjKSUpY6IbN_VJPW_vgPLO---90-WLmj1qxUsK1-a7WCV4cgo5EMegEherWgmaOGGQNcuMIQEmnfU-N1c_2ThxzwMuSQLmGugsSJZ2Pcwb82oc0mLILBE3PZOnQ2gn1CmvhmK7YEarGbmc43WsotHaZLjKBDRZ_Z5bB7vfC4FMGjb"/>
+</div>
+<div class="flex flex-col gap-sm">
+<h3 class="font-headline-lg text-headline-lg text-primary">Intelligence in every pixel.</h3>
+<p class="text-on-surface-variant text-body-md leading-relaxed">
+                    The NexGen Phone Pro features our most advanced AI processor yet, designed to optimize every interaction. From real-time photo enhancements to intelligent battery management, the hardware and software work in perfect harmony to provide a seamless professional experience.
+                </p>
+<div class="flex gap-base mt-base">
+<div class="w-12 h-1 rounded-full bg-primary"></div>
+<div class="w-4 h-1 rounded-full bg-outline-variant"></div>
+<div class="w-4 h-1 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center h-xl px-margin-mobile">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-md py-xs active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-md text-label-md">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+</nav>
+<script>
+        // Subtle micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('absolute', 'inset-0', 'bg-white/20', 'rounded-lg', 'animate-ping');
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 400);
+            });
+        });
+
+        // Theme toggle simulation (Optional logic if needed)
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body></html>

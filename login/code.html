@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexKart Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  body {
+    font-family: Inter, system-ui, sans-serif;
+    color:#12211b;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(22, 163, 74, .24), transparent 34%),
+      radial-gradient(circle at 88% 16%, rgba(14, 165, 233, .20), transparent 34%),
+      linear-gradient(135deg, #f8fafc 0%, #ecfdf5 52%, #e0f2fe 100%);
+  }
+  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24; }
+  .login-shell {
+    background: rgba(255,255,255,.84);
+    border: 1px solid rgba(15, 118, 110, .16);
+    box-shadow: 0 28px 80px rgba(15, 23, 42, .16);
+  }
+  .brand-panel {
+    background:
+      linear-gradient(145deg, rgba(15, 118, 110, .95), rgba(37, 99, 235, .88)),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='rgba(255,255,255,.18)' stroke-width='1'%3E%3Cpath d='M0 45h180M0 90h180M0 135h180M45 0v180M90 0v180M135 0v180'/%3E%3C/g%3E%3C/svg%3E");
+  }
+</style>
+</head>
+<body>
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-emerald-100">
+  <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a class="font-black text-2xl text-emerald-700" href="/home_screen_dark_glassmorphism_live/code.html">NexKart</a>
+  </div>
+</header>
+<main class="min-h-[calc(100dvh-72px)] grid place-items-center px-4 py-10">
+  <section class="login-shell w-full max-w-5xl rounded-3xl overflow-hidden grid md:grid-cols-[1fr_1.05fr]">
+    <div class="brand-panel hidden md:flex flex-col justify-between p-8 text-white">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/16 px-4 py-2 font-bold">
+          <span class="material-symbols-outlined">verified_user</span>
+          Secure shopping
+        </div>
+        <h2 class="mt-8 text-5xl font-black leading-tight" style="font-family:'Hanken Grotesk',Inter,sans-serif;">Welcome to smarter shopping.</h2>
+        <p class="mt-4 text-white/80 text-lg">Track orders, save addresses, unlock faster checkout, and continue your NexKart journey.</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="rounded-2xl bg-white/14 p-4"><span class="material-symbols-outlined">local_shipping</span><p class="mt-2 font-bold">Fast delivery</p></div>
+        <div class="rounded-2xl bg-white/14 p-4"><span class="material-symbols-outlined">payments</span><p class="mt-2 font-bold">Easy payments</p></div>
+        <div class="rounded-2xl bg-white/14 p-4"><span class="material-symbols-outlined">favorite</span><p class="mt-2 font-bold">Wishlist</p></div>
+      </div>
+    </div>
+    <div class="p-6 md:p-10">
+    <div class="mb-7">
+      <p class="text-sky-600 font-black uppercase tracking-wide text-sm">Welcome back</p>
+      <h1 class="font-black text-4xl mt-1 text-emerald-700" style="font-family:'Hanken Grotesk',Inter,sans-serif;">Login to NexKart</h1>
+      <p class="mt-2 text-slate-500 font-medium">Use your mobile number or email to continue.</p>
+    </div>
+    <form class="grid gap-4">
+      <label class="grid gap-2">
+        <span class="font-bold text-sm text-slate-700">Mobile number or email</span>
+        <input class="rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-950 shadow-sm focus:border-emerald-500 focus:ring-emerald-500/20" placeholder="Enter mobile or email" type="text"/>
+      </label>
+      <label class="grid gap-2">
+        <span class="font-bold text-sm text-slate-700">Password</span>
+        <input class="rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-slate-950 shadow-sm focus:border-emerald-500 focus:ring-emerald-500/20" placeholder="Enter password" type="password"/>
+      </label>
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center gap-2 font-semibold text-slate-600"><input class="rounded border-emerald-200 text-emerald-600 focus:ring-emerald-500" type="checkbox"/> Remember me</label>
+        <button class="font-black text-sky-600" type="button">Forgot password?</button>
+      </div>
+      <button class="mt-2 rounded-2xl bg-emerald-600 px-4 py-3 font-black text-white shadow-lg shadow-emerald-600/20 active:scale-95 transition hover:bg-emerald-700" type="button">LOGIN</button>
+      <button class="rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 font-black text-sky-700 active:scale-95 transition" type="button">CREATE ACCOUNT</button>
+    </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>

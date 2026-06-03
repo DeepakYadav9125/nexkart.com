@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>NexKart - NexPhone 15</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#82db7e",
+                        "primary-fixed": "#d9e2ff",
+                        "inverse-surface": "#303030",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-fixed-variant": "#004299",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb599",
+                        "secondary-container": "#fd661d",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#0b6b1d",
+                        "secondary": "#a73a00",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1f6feb",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary-fixed": "#370e00",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#eae7e7",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "surface-container-low": "#f6f3f2",
+                        "outline": "#727786",
+                        "tertiary-container": "#2e8534",
+                        "on-tertiary-container": "#f7fff1",
+                        "secondary-fixed": "#ffdbce",
+                        "outline-variant": "#c2c6d6",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#afc6ff",
+                        "surface-dim": "#dcd9d9",
+                        "primary": "#0056c3",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed-dim": "#afc6ff",
+                        "on-secondary-fixed-variant": "#7f2b00",
+                        "on-secondary-container": "#571b00",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#424754",
+                        "on-primary-fixed": "#001944",
+                        "surface-container": "#f0eded",
+                        "surface": "#fcf9f8",
+                        "tertiary-fixed": "#9df898",
+                        "surface-tint": "#0059c8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "gutter": "12px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface mb-20">
+<!-- Top App Bar (Task-Focused: Suppression Check - Keep for navigation but specific actions) -->
+<header class="bg-primary text-on-primary flex justify-between items-center px-margin-mobile h-16 w-full fixed top-0 z-50 shadow-md">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-90 scale-95 active:transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile italic font-black text-on-primary">NexKart</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-90 scale-95 active:transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="hover:opacity-90 scale-95 active:transition-transform">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="hover:opacity-90 scale-95 active:transition-transform relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-secondary-container text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold border border-primary">2</span>
+</button>
+</div>
+</header>
+<main class="mt-16">
+<!-- Hero Image Carousel -->
+<section class="relative w-full bg-white overflow-hidden">
+<div class="flex transition-transform duration-500 ease-out" id="carousel">
+<div class="min-w-full aspect-square flex items-center justify-center p-8">
+<img alt="NexPhone 15 Front" class="object-contain max-h-[400px]" data-alt="A professional studio product shot of the titanium NexPhone 15 smartphone, showcasing its sleek metallic edges and triple-lens camera system. The lighting is crisp and cinematic, highlighting the refined texture of the material against a clean, soft-gray background. The overall aesthetic is premium, corporate, and technologically advanced, echoing a light-mode modern design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLi0ula-r8lg5_qYGZOWAlSazHK9ijpHjkvS8FSwa9PjCTAPIND-oq-7yxlrMD-F1MWvEjDgtUXIXBUB715MapF-yhcaMTCRO0FMpEIW1DTD40fZ_iwhG2S3tJGLzXkXfERMi-FNNItW194w_jCqK0vwbaAGOxSKpmDkl8QtiOk50nv8KLesfBH2R4oYgPeR-0ZbeMVQsXtiYbHI6wQcSGTt9-Rng05Rvjdc5DkkeqzN94lVjc91w09TjeydtD48USgu8CMfOXCzoU"/>
+</div>
+</div>
+<!-- Indicators -->
+<div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+<!-- Wishlist Button -->
+<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-surface shadow-md flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</section>
+<!-- Info Section -->
+<section class="p-margin-mobile bg-white shadow-sm">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-md text-headline-md text-on-surface leading-tight">NexPhone 15 Pro Max (Titanium Blue, 256 GB)</h2>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="bg-tertiary text-on-tertiary px-2 py-0.5 rounded text-label-sm flex items-center gap-1">
+                        4.8 <span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</span>
+<span class="text-on-surface-variant text-body-md">1,248 Ratings</span>
+</div>
+<div class="flex items-baseline gap-3 mt-4">
+<span class="text-display-lg font-display-lg text-on-surface">₹1,44,900</span>
+<span class="text-on-surface-variant line-through text-body-lg">₹1,59,900</span>
+<span class="text-tertiary font-bold text-body-lg">9% off</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg mt-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<p class="text-body-md text-on-surface">Delivery by <span class="font-bold">Tomorrow, 11 PM</span></p>
+</div>
+</div>
+</section>
+<!-- Offers Section (Bento Style) -->
+<section class="p-margin-mobile grid grid-cols-2 gap-3">
+<div class="p-4 bg-[#E3F2FD] border border-blue-100 rounded-xl flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<p class="text-label-md font-bold text-on-surface">Bank Offer</p>
+<p class="text-label-sm text-on-surface-variant">Flat ₹5,000 off on Credit Cards</p>
+</div>
+<div class="p-4 bg-[#F1F8E9] border border-green-100 rounded-xl flex flex-col gap-2">
+<span class="material-symbols-outlined text-tertiary">swap_horizontal_circle</span>
+<p class="text-label-md font-bold text-on-surface">Exchange Offer</p>
+<p class="text-label-sm text-on-surface-variant">Get up to ₹35,000 off</p>
+</div>
+</section>
+<!-- Specifications Accordion -->
+<section class="bg-white mt-2">
+<!-- Highlights -->
+<div class="border-b border-outline-variant overflow-hidden">
+<button class="w-full p-margin-mobile flex justify-between items-center text-left" onclick="toggleAccordion('highlights')">
+<span class="font-headline-md text-headline-md">Highlights</span>
+<span class="material-symbols-outlined transition-transform duration-300" id="highlights-icon">expand_more</span>
+</button>
+<div class="px-margin-mobile pb-margin-mobile hidden" id="highlights-content">
+<ul class="list-disc list-inside space-y-2 text-body-md text-on-surface-variant">
+<li>256 GB ROM | 17.02 cm (6.7 inch) Super Retina XDR Display</li>
+<li>48MP + 12MP + 12MP | 12MP Front Camera</li>
+<li>A17 Pro Chip, 6 Core Processor</li>
+<li>Aerospace-grade Titanium Design</li>
+<li>Action Button for custom shortcuts</li>
+</ul>
+</div>
+</div>
+<!-- Description -->
+<div class="border-b border-outline-variant overflow-hidden">
+<button class="w-full p-margin-mobile flex justify-between items-center text-left" onclick="toggleAccordion('description')">
+<span class="font-headline-md text-headline-md">Description</span>
+<span class="material-symbols-outlined transition-transform duration-300" id="description-icon">expand_more</span>
+</button>
+<div class="px-margin-mobile pb-margin-mobile hidden" id="description-content">
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+                        Forged in titanium and featuring the groundbreaking A17 Pro chip, a customizable Action button, and a more versatile Pro camera system. The NexPhone 15 Pro Max represents the pinnacle of mobile engineering with its lightweight yet incredibly strong aerospace-grade titanium design.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="p-margin-mobile bg-white mt-2">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md">Ratings &amp; Reviews</h3>
+<button class="text-primary font-bold text-label-lg">View All</button>
+</div>
+<div class="flex gap-8 mb-8">
+<div class="flex flex-col items-center gap-1">
+<span class="text-[40px] font-black leading-none">4.8</span>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-label-sm text-on-surface-variant">1,248 ratings</span>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm w-3">5</span>
+<div class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[85%]"></div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm w-3">4</span>
+<div class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[10%]"></div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm w-3">3</span>
+<div class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[3%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Review -->
+<div class="space-y-4">
+<div class="p-4 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-tertiary text-on-tertiary px-1.5 py-0.5 rounded text-[10px] flex items-center gap-0.5">
+                            5 <span class="material-symbols-outlined text-[8px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</span>
+<span class="font-bold text-label-md">Best smartphone of 2024!</span>
+</div>
+<p class="text-body-md text-on-surface-variant italic mb-3">"The camera quality is unparalleled. The titanium frame makes it feel so light in hand. Worth every penny."</p>
+<div class="flex justify-between items-center text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">verified</span> Ankit Sharma, Verified Purchaser</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">thumb_up</span> 142</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommendations (Asymmetric Grid) -->
+<section class="p-margin-mobile">
+<h3 class="font-headline-md text-headline-md mb-4">Frequently Bought Together</h3>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4">
+<div class="min-w-[160px] bg-white rounded-xl overflow-hidden shadow-sm border border-outline-variant">
+<div class="aspect-square p-4">
+<img class="w-full h-full object-contain" data-alt="A clean product shot of a clear silicone protective case for a smartphone. The case is displayed at an angle, showing its transparent, flexible material and reinforced corners. It is set against a vibrant, energetic background with blue and orange accent light, giving it a modern e-commerce feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF_3slfeGltgQMxCLL3RZxeHpHsUmX-fwNVF_OCnc3vV2qIhJfLU5t1oGOyiNq3LAYGem5l2r5CAtmvnDoteI9i2RR2R2tdremPg25ohXj_foiPJIc-5ysEnL-uNDghAzdUEY4gsul0AhEPoqpL1jo96GFC3nd-3z4nc7_KTJcsbCqVaHK5qLQYqqVGwibiUK4-u_tYn1Wr8gN87YINhnYkau9Yq8f_46ImfYfGZ63unOO09MphaZVBd_IHj6zz212cIwG8FdZuIxc"/>
+</div>
+<div class="p-3">
+<p class="text-label-md truncate">NexCase Clear Pro</p>
+<p class="font-bold text-on-surface mt-1">₹1,999</p>
+</div>
+</div>
+<div class="min-w-[160px] bg-white rounded-xl overflow-hidden shadow-sm border border-outline-variant">
+<div class="aspect-square p-4">
+<img class="w-full h-full object-contain" data-alt="A sleek white 20W USB-C power adapter shown in a minimalist studio setting. The product is illuminated with high-contrast lighting that emphasizes its clean surfaces and compact design. The background is a soft neutral gray with professional product photography aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWXI5CS5nPltwYUyc3T-4VhexRn5-kd8RhgsnHygz9y3wV-6GWM435lCqGa5ZGVrWNmTY2Ke_ZbXT2JFoLgJa0ztnOyQSlVFdVP6XohK-llR12rzDINjzxMx_jM8EpEpBmFszETZ0X6KvN7m72H5eJeGoqB5l-GkenpVWTYqnLNkji0K__CISTnxz8RCR_TgTi012z1OyGmhk3kZY_aIuXU0dmovsCej4wTk_Xlk9SsQfieQQaPPNP-8hzIsgdLFXIlT3SUYFySEjW"/>
+</div>
+<div class="p-3">
+<p class="text-label-md truncate">NexCharge 20W Wall Adapter</p>
+<p class="font-bold text-on-surface mt-1">₹1,890</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<nav class="fixed bottom-0 left-0 right-0 h-16 bg-white z-[100] border-t border-outline-variant flex">
+<button class="flex-1 bg-white text-primary font-bold text-label-lg flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+            Add to Cart
+        </button>
+<button class="flex-1 bg-secondary-container text-white font-bold text-label-lg flex items-center justify-center gap-2 hover:opacity-95 active:scale-95 transition-all">
+<span class="material-symbols-outlined">bolt</span>
+            Buy Now
+        </button>
+</nav>
+<script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(id + '-content');
+            const icon = document.getElementById(id + '-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Micro-interaction for Add to Cart
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if(btn.innerText.includes('Add to Cart')) {
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Adding...';
+                    setTimeout(() => {
+                        btn.innerHTML = '<span class="material-symbols-outlined text-tertiary">check_circle</span> Added!';
+                        setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+                    }, 800);
+                }
+            });
+        });
+    </script>
+</body></html>

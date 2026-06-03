@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexKart | Secure Payment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#82db7e",
+                      "surface": "#f3faff",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#a56600",
+                      "surface-variant": "#cfe6f2",
+                      "surface-container-high": "#d5ecf8",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb865",
+                      "on-surface-variant": "#40493d",
+                      "surface-tint": "#106d20",
+                      "tertiary-fixed": "#ffddba",
+                      "on-secondary-container": "#003567",
+                      "outline": "#707a6c",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#f7fff1",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#54a0fe",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#002204",
+                      "tertiary": "#845000",
+                      "on-tertiary-container": "#fffbff",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#a5c8ff",
+                      "inverse-on-surface": "#dff4ff",
+                      "on-surface": "#071e27",
+                      "surface-container-low": "#e6f6ff",
+                      "secondary-fixed": "#d4e3ff",
+                      "on-tertiary-fixed-variant": "#663d00",
+                      "on-secondary-fixed-variant": "#004786",
+                      "surface-container": "#dbf1fe",
+                      "outline-variant": "#bfcab9",
+                      "on-background": "#071e27",
+                      "surface-bright": "#f3faff",
+                      "surface-container-highest": "#cfe6f2",
+                      "background": "#f3faff",
+                      "surface-dim": "#c7dde9",
+                      "primary-fixed": "#9df898",
+                      "inverse-primary": "#82db7e",
+                      "secondary": "#005faf",
+                      "primary-container": "#2e8534",
+                      "on-secondary-fixed": "#001c3a",
+                      "primary": "#0b6b1d",
+                      "on-tertiary-fixed": "#2b1700",
+                      "inverse-surface": "#1e333c",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#005312"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "base": "8px",
+                      "xl": "80px",
+                      "sm": "12px",
+                      "lg": "48px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "body-sm": ["Inter"],
+                      "label-md": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-header {
+            background: rgba(11, 107, 29, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-footer {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(191, 202, 185, 0.3);
+        }
+        .payment-card-active {
+            border-left: 4px solid #0b6b1d;
+            background-color: #f7fff1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar Shell -->
+<header class="glass-header text-on-primary font-headline-md fixed top-0 z-50 flex justify-between items-center px-margin-mobile h-16 w-full shadow-md">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined scale-95 active:transition-transform hover:opacity-90" data-icon="arrow_back">arrow_back</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile italic font-black text-on-primary">NexKart</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined hover:opacity-90" data-icon="shopping_cart">shopping_cart</span>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile max-w-2xl mx-auto space-y-base">
+<!-- Order Summary Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md mb-lg">
+<div class="flex justify-between items-center mb-base">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Payment Details</h2>
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-md font-label-md uppercase tracking-wider">Secure</span>
+</div>
+<div class="space-y-xs opacity-80">
+<div class="flex justify-between">
+<p class="font-body-md text-body-md">Order Reference</p>
+<p class="font-label-md text-label-md">#NX-9982345</p>
+</div>
+<div class="flex justify-between">
+<p class="font-body-md text-body-md">Items Subtotal</p>
+<p class="font-body-md text-body-md font-semibold">₹4,798</p>
+</div>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant flex justify-between items-end">
+<div>
+<p class="text-label-md font-label-md uppercase text-on-surface-variant">Total Amount</p>
+<p class="text-headline-lg font-headline-lg text-primary">₹4,798</p>
+</div>
+<div class="bg-surface-container-high rounded-lg p-2">
+<img alt="Payment Partners" class="h-8 object-contain" data-alt="A macro close-up of a high-quality credit card security chip and holographic branding logo against a clean white background. The image is crisp, modern, and conveys a high level of technological security and corporate reliability. Soft studio lighting highlights the metallic textures of the card elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP3A_TgO9s-WAaO-4MsHIWcsm1d4rHM2Ri82GK4yhV9Z52jkoDj5E702UkxjWkrY0iM1vuNvwCpW-9nSxO2o_M68dgQYONZcwk4dyMcuRHuYhnW-tWeGQUFCia-lC2yERpXALx658WXLQTghupiOy_33Tx-N4kQ2LRbvZSTdyf7hoYOB_8qzOUqW4TuMpZe7LT9pHwX-mls_yGVsBH6YFavVEfYLoBJkr1RwM_WUCA4tnEJqlkaiq2omySOeCOKlzafzWcn3_fscmA"/>
+</div>
+</div>
+</section>
+<!-- Payment Options Header -->
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-base">Select Payment Method</h3>
+<!-- Payment Options List -->
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-base mt-lg">Saved Cards</h3><div class="space-y-base mb-lg" id="saved-cards-list"><label class="block cursor-pointer group transition-all" onclick="selectOption('saved_visa')"><input class="hidden peer" name="payment" type="radio"/><div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center justify-between peer-checked:payment-card-active hover:bg-surface-container-low transition-colors" id="option-saved_visa"><div class="flex items-center gap-md"><div class="w-12 h-12 bg-primary-container/10 flex items-center justify-center rounded-lg"><span class="material-symbols-outlined text-primary text-3xl" data-icon="credit_card">credit_card</span></div><div><p class="font-headline-lg-mobile text-body-md font-bold text-on-surface">Visa ending in 1234</p><p class="text-body-sm text-on-surface-variant">Expires 12/26 • HDFC Bank</p></div></div><span class="material-symbols-outlined text-primary opacity-0 group-has-[:checked]:opacity-100" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span></div></label><label class="block cursor-pointer group transition-all" onclick="selectOption('saved_mastercard')"><input class="hidden peer" name="payment" type="radio"/><div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center justify-between peer-checked:payment-card-active hover:bg-surface-container-low transition-colors" id="option-saved_mastercard"><div class="flex items-center gap-md"><div class="w-12 h-12 bg-primary-container/10 flex items-center justify-center rounded-lg"><span class="material-symbols-outlined text-primary text-3xl" data-icon="credit_card">credit_card</span></div><div><p class="font-headline-lg-mobile text-body-md font-bold text-on-surface">Mastercard ending in 5678</p><p class="text-body-sm text-on-surface-variant">Expires 08/25 • ICICI Bank</p></div></div><span class="material-symbols-outlined text-primary opacity-0 group-has-[:checked]:opacity-100" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span></div></label></div><div class="space-y-base" id="payment-options">
+<!-- Credit/Debit Cards -->
+<label class="block cursor-pointer group transition-all" onclick="selectOption('card')">
+<input checked="" class="hidden peer" name="payment" type="radio"/>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center justify-between peer-checked:payment-card-active hover:bg-surface-container-low transition-colors" id="option-card">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-container/10 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-body-md font-bold text-on-surface">Credit/Debit Cards</p>
+<p class="text-body-sm text-on-surface-variant">Visa, Mastercard, RuPay &amp; more</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-has-[:checked]:opacity-100" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<!-- UPI -->
+<label class="block cursor-pointer group transition-all" onclick="selectOption('upi')">
+<input class="hidden peer" name="payment" type="radio"/>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center justify-between peer-checked:payment-card-active hover:bg-surface-container-low transition-colors" id="option-upi">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-container/10 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-body-md font-bold text-on-surface">UPI</p>
+<p class="text-body-sm text-on-surface-variant">Google Pay, PhonePe, Paytm</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-has-[:checked]:opacity-100" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<!-- Net Banking -->
+<label class="block cursor-pointer group transition-all" onclick="selectOption('netbank')">
+<input class="hidden peer" name="payment" type="radio"/>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center justify-between peer-checked:payment-card-active hover:bg-surface-container-low transition-colors" id="option-netbank">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-container/10 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-body-md font-bold text-on-surface">Net Banking</p>
+<p class="text-body-sm text-on-surface-variant">All Indian Major Banks</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-has-[:checked]:opacity-100" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<!-- Wallets -->
+<label class="block cursor-pointer group transition-all" onclick="selectOption('wallet')">
+<input class="hidden peer" name="payment" type="radio"/>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex items-center justify-between peer-checked:payment-card-active hover:bg-surface-container-low transition-colors" id="option-wallet">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-container/10 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-body-md font-bold text-on-surface">Wallets</p>
+<p class="text-body-sm text-on-surface-variant">Amazon Pay, Mobikwik &amp; more</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-has-[:checked]:opacity-100" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+</div>
+<!-- Security Trust Badge -->
+<div class="mt-lg py-md flex flex-col items-center justify-center opacity-60 text-center">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<p class="text-label-md font-label-md uppercase tracking-widest">PCI DSS Compliant</p>
+</div>
+<p class="text-body-sm max-w-xs">Your data is encrypted using 256-bit SSL protocols. We do not store your CVV or PIN.</p>
+</div>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<footer class="glass-footer fixed bottom-0 left-0 w-full z-50 flex flex-col md:flex-row justify-between items-center p-margin-mobile gap-md max-w-full">
+<div class="hidden md:flex flex-col">
+<p class="text-label-md font-label-md text-on-surface-variant uppercase">Payment Summary</p>
+<p class="font-headline-lg text-primary">₹4,798.00</p>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-12 h-14 rounded-full font-bold flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all active:scale-95 group">
+<span class="material-symbols-outlined group-hover:animate-pulse" data-icon="lock">lock</span>
+<span class="uppercase tracking-widest">Pay Securely ₹4,798</span>
+</button>
+</footer>
+<script>
+        function selectOption(type) {
+            // Logic handled by peer-checked in CSS, but this function can trigger micro-interactions
+            console.log('Payment selected:', type);
+            
+            // Visual feedback for clicking
+            const container = document.getElementById(`option-${type}`);
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                container.classList.remove('scale-95');
+            }, 100);
+        }
+
+        // Simple entrance animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('#payment-options label');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.transition = 'all 0.4s ease-out';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>

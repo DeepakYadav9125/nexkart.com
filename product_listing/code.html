@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>NexKart | Explore Categories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#82db7e",
+                      "primary-fixed": "#d9e2ff",
+                      "inverse-surface": "#303030",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-primary-fixed-variant": "#004299",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#ffb599",
+                      "secondary-container": "#fd661d",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#0b6b1d",
+                      "secondary": "#a73a00",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#1f6feb",
+                      "on-primary-container": "#fefcff",
+                      "on-secondary-fixed": "#370e00",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#eae7e7",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#1b1c1c",
+                      "surface-container-low": "#f6f3f2",
+                      "outline": "#727786",
+                      "tertiary-container": "#2e8534",
+                      "on-tertiary-container": "#f7fff1",
+                      "secondary-fixed": "#ffdbce",
+                      "outline-variant": "#c2c6d6",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#afc6ff",
+                      "surface-dim": "#dcd9d9",
+                      "primary": "#0056c3",
+                      "background": "#fcf9f8",
+                      "on-tertiary-fixed": "#002204",
+                      "surface-variant": "#e5e2e1",
+                      "primary-fixed-dim": "#afc6ff",
+                      "on-secondary-fixed-variant": "#7f2b00",
+                      "on-secondary-container": "#571b00",
+                      "surface-bright": "#fcf9f8",
+                      "on-tertiary-fixed-variant": "#005312",
+                      "on-surface": "#1b1c1c",
+                      "on-surface-variant": "#424754",
+                      "on-primary-fixed": "#001944",
+                      "surface-container": "#f0eded",
+                      "surface": "#fcf9f8",
+                      "tertiary-fixed": "#9df898",
+                      "surface-tint": "#0059c8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "24px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "gutter": "12px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "14px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed">
+<!-- Top AppBar -->
+<header class="bg-primary text-on-primary font-headline-md text-headline-md-mobile shadow-md flex justify-between items-center px-margin-mobile h-16 w-full fixed top-0 z-50">
+<div class="flex items-center gap-4 flex-1">
+<button class="material-symbols-outlined hover:opacity-90 active:scale-95 transition-transform">arrow_back</button>
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-primary/70 text-[20px]">search</span>
+<input class="w-full bg-on-primary/10 border-none rounded-lg py-2 pl-10 pr-4 text-white placeholder:text-on-primary/60 focus:ring-2 focus:ring-on-primary/30 transition-all font-body-md" placeholder="Search for Products..." type="text"/>
+</div>
+</div>
+<div class="flex items-center ml-4">
+<button class="material-symbols-outlined hover:opacity-90 active:scale-95 transition-transform">shopping_cart</button>
+</div>
+</header>
+<!-- Filter Bar (Sticky) -->
+<nav class="fixed top-16 left-0 w-full bg-surface-container shadow-sm z-40 overflow-x-auto hide-scrollbar">
+<div class="flex items-center gap-2 px-margin-mobile py-3">
+<button class="flex items-center gap-1 px-4 py-1.5 bg-white border border-outline-variant rounded-full text-label-md font-label-md whitespace-nowrap shadow-sm active:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span> Sort
+            </button>
+<button class="flex items-center gap-1 px-4 py-1.5 bg-white border border-outline-variant rounded-full text-label-md font-label-md whitespace-nowrap shadow-sm active:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+            </button>
+<button class="flex items-center gap-1 px-4 py-1.5 bg-white border border-outline-variant rounded-full text-label-md font-label-md whitespace-nowrap shadow-sm active:bg-surface-container-high transition-colors">
+                Brand <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-1 px-4 py-1.5 bg-white border border-outline-variant rounded-full text-label-md font-label-md whitespace-nowrap shadow-sm active:bg-surface-container-high transition-colors">
+                Price <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Grid -->
+<main class="mt-36 mb-20 px-margin-mobile">
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Product Card 1 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden flex flex-col relative group">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="A professional studio shot of a high-performance crimson red athletic sneaker against a clean white background. The lighting is crisp and even, highlighting the sleek textures of the mesh and high-quality leather. The image conveys a sense of speed, premium quality, and modern design, aligned with a high-end corporate e-commerce aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB97GzKkgg1r4dD3lrHkAbEVGPEwiG3Oz9D5clx_fotD93tXEDvO_yIwkgf6QOGhWsejmCSl2FzTJCqPmEYer45SREAjnmzvrHw3EScn7I2t8UFleZRkySVcWEz0cJyEf_azqgzqvPpMjSPeB_Bthe9E3twbY3F8rcCp9cPP4NcEWHF_05FhYCM6kUU8qvXTzSvaXd7yGdXQ4m915KaaEMnJ--b2e_Qooekcm4xqbuHJcTLkJ637UnWgue2zRt0llgEnrTo4uCvfucI"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-secondary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-tertiary text-on-tertiary px-1.5 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1">
+                        4.4 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<div class="flex items-center gap-1 mb-1">
+<span class="text-[10px] font-bold text-primary tracking-tighter uppercase px-1 border border-primary/20 rounded">NexKart Assured</span>
+</div>
+<h3 class="text-on-surface font-body-md text-body-md line-clamp-2 mb-2 leading-tight">SpeedRunner Pro Ultra-Light Athletic Shoes</h3>
+<div class="mt-auto">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold text-body-lg">₹2,499</span>
+<span class="text-on-surface-variant line-through text-label-sm">₹4,999</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">50% off</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden flex flex-col relative group">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="Premium over-ear wireless headphones in a sophisticated matte charcoal finish, positioned artistically on a light gray surface. The lighting is soft and ambient, emphasizing the ergonomic curves and high-end materials. The scene projects a feeling of luxury, advanced technology, and professional studio-grade audio quality, consistent with a clean corporate branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8ong69vxMNPd-9DOuWN2qdWTaxq6hMipN-M6kIeFyY0iCj313vn0i5RAdJgIb4meto34ri40BcYS1i_I7QWIb4SmfY0a44nlfqe1467pGP95uJK5jwnCQhkMCq1_eznZScHG7YRzPS4Y_f2Ly5xK5eHOvc5WbvXLfDYQEd8TWvMsKgqRbRMERoRHTKTqN8hID-RTJbcagtP2Oqwn8HGMQiU0EhHcGGkgIEdF56NPlRsJMhaAVIUbABrk8LfcjlYwUQEmuM3qgd6vV"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-tertiary text-on-tertiary px-1.5 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1">
+                        4.8 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-on-surface font-body-md text-body-md line-clamp-2 mb-2 leading-tight">EliteSound ANC Wireless Over-Ear Headphones</h3>
+<div class="mt-auto">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold text-body-lg">₹8,990</span>
+<span class="text-on-surface-variant line-through text-label-sm">₹12,990</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">30% off</span>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden flex flex-col relative group">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="A minimalist designer watch with a white face and a light tan leather strap, showcased in a bright, airy setting with soft natural light. The photograph captures the elegant simplicity and timeless design of the timepiece. The overall aesthetic is calm, high-key, and refined, aligning with a modern corporate product display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqfgQ4HBoljgcXMLUJNA4X3iPxgSoouoIz-_v0b2J7RPNS7yvy-KHahBTQbv0WABSPTo6t7YEAdv9Q2VaLMcIVKAHO83u0dudWc0_r2AqKy4OPEYbtj78CRJaa0cA6w_uaw8rIQr2dWC1UyMPCyyRqNFSgcuK9a9175Ei-sTXLwSmTRJySg4LtMJQ_LCD9d7Nx0e0u_nHtb3PFi5t7ySgBbVP2UIc9p6FatU9fOWvIA9J7kt6Wmr0Z1kx_bxa_HGa8GO2xjSNh1CKJ"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-tertiary text-on-tertiary px-1.5 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1">
+                        4.2 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<div class="flex items-center gap-1 mb-1">
+<span class="text-[10px] font-bold text-primary tracking-tighter uppercase px-1 border border-primary/20 rounded">NexKart Assured</span>
+</div>
+<h3 class="text-on-surface font-body-md text-body-md line-clamp-2 mb-2 leading-tight">Minimalist Series 1 Analog Leather Watch</h3>
+<div class="mt-auto">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold text-body-lg">₹1,299</span>
+<span class="text-on-surface-variant line-through text-label-sm">₹2,499</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">48% off</span>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden flex flex-col relative group">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="A vintage-style instant camera in a soft pastel blue color, presented with a vibrant and energetic lighting scheme. The image is bright and cheerful, highlighting the tactile buttons and playful design of the product. The visual style is modern, high-contrast, and engaging, fitting for a dynamic commerce platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO53WPYkLeZe_79FMY2l9HzLRAmiYCsOe7Sx6G2SLMXU9gOIt8YXwX-vFJDZoD7QEiNL83MLg4aEvoxF8U7Sllb3XheOTZj0lUXIDfpLx6RNUH12DimwkrChbZ8KQYClsDSWkL6hx2yisEm-xbhulvUeSguzCeX0-FhOWo-1rj0n3OIAjRzdBJQ_zjqmK_dB7N1K37f2QBpfTW_msHHAzWj-X55fX2AFcYUsNMCq4Rc6ctSvTp4mBS841tdStj0FLws4Ii7ui8UYrX"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-tertiary text-on-tertiary px-1.5 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1">
+                        4.5 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-on-surface font-body-md text-body-md line-clamp-2 mb-2 leading-tight">InstaShot Classic Retro Instant Film Camera</h3>
+<div class="mt-auto">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold text-body-lg">₹5,499</span>
+<span class="text-on-surface-variant line-through text-label-sm">₹6,999</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">21% off</span>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden flex flex-col relative group">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="A sleek black reusable smart water bottle with a digital temperature display on the lid. The product is shown in a high-tech, minimalist environment with cool-toned studio lighting that emphasizes its metallic texture and clean lines. The mood is one of efficiency and modern living within a corporate-grade aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB32gnVYYjcEiiFLJbb-dyofUtgwXw8JDP-98Lif5627Ls-8dUF-DNFRANMkho8N62rUN6ebgq7n2CWTTPsY0EpCAVNKftMTozIeraINQD4c57c9ptZlN0CLoShYElbhO0V5TJuqeKh60glRVjA-dAGG_LfjIidoyIy_kAGl256zfghKOC2kEJr9k_ifDK-kraStzi1QC8ArJSwy0aOPZi-ZG0ArW8BHjZNNM7NiinoGwrxRVTDpgn4dsL8H47ZJOUU1xUdM7rZTEOx"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-tertiary text-on-tertiary px-1.5 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1">
+                        4.1 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<div class="flex items-center gap-1 mb-1">
+<span class="text-[10px] font-bold text-primary tracking-tighter uppercase px-1 border border-primary/20 rounded">NexKart Assured</span>
+</div>
+<h3 class="text-on-surface font-body-md text-body-md line-clamp-2 mb-2 leading-tight">HydroSmart Temperature Monitoring Flask 750ml</h3>
+<div class="mt-auto">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold text-body-lg">₹999</span>
+<span class="text-on-surface-variant line-through text-label-sm">₹1,999</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">50% off</span>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden flex flex-col relative group">
+<div class="relative aspect-square">
+<img class="w-full h-full object-cover" data-alt="A high-end mechanical keyboard with customizable RGB lighting glowing in soft purple and blue hues. The image is captured in a low-key, professional gaming setup style with deep blacks and sharp focus on the keycaps. The visual vibe is futuristic, precise, and energetically advanced for high-performance users." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuwTK7emSbfpVP2KsUj3sBpOY5sdKeEKS_NXqlirdlUPKqL9vdBgugQcThHsmaD_uwW_Lhj0sWVZJfEaW97Jz7tlNfDkYZHrSwgO0C33dtwqgg1b96Giq847B4kY6OWfmjlEIPkjPnT3pbPbt8trhk4xx6El2R7t3SZrKKXH5Mnl-1D8wmcZqby2XJ2V8NU633FPtFd9GzmQS9NRZ2ufmbBIBdZgrxvvppPv--_UppW-uSy2xLG7J6AzaagNiGTFNN2L0PatcED0-t"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-secondary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-tertiary text-on-tertiary px-1.5 py-0.5 rounded text-label-sm font-label-sm flex items-center gap-1">
+                        4.7 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<h3 class="text-on-surface font-body-md text-body-md line-clamp-2 mb-2 leading-tight">NeoTypist RGB Mechanical Tactile Keyboard</h3>
+<div class="mt-auto">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold text-body-lg">₹4,299</span>
+<span class="text-on-surface-variant line-through text-label-sm">₹5,999</span>
+</div>
+<span class="text-tertiary font-bold text-label-md">28% off</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<footer class="fixed bottom-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-inverse-surface py-2 pb-safe px-4 border-t border-outline-variant shadow-lg">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold hover:bg-surface-container-low transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-md text-label-md mt-1">Categories</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-md text-label-md mt-1">Notifications</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-1">Account</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md mt-1">Cart</span>
+</button>
+</footer>
+<script>
+        // Simple micro-interaction for wishlist buttons
+        document.querySelectorAll('button span:contains("favorite")').forEach(btn => {
+            btn.parentElement.addEventListener('click', (e) => {
+                const icon = e.currentTarget.querySelector('.material-symbols-outlined');
+                const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+                icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                if (!isFilled) {
+                    icon.classList.add('text-secondary');
+                } else {
+                    icon.classList.remove('text-secondary');
+                }
+            });
+        });
+
+        // Add "Buy Now" quick action reveal on hover for desktop-like feel
+        // Since this is mobile-first, we'll keep it simple
+    </script>
+</body></html>

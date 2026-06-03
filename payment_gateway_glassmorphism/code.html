@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexKart Secure Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c2c6d6",
+                      "surface-container": "#f0eded",
+                      "surface-container-low": "#f6f3f2",
+                      "secondary-fixed": "#ffdbce",
+                      "on-tertiary-fixed-variant": "#005312",
+                      "on-secondary-fixed-variant": "#7f2b00",
+                      "on-surface": "#1b1c1c",
+                      "secondary-fixed-dim": "#ffb599",
+                      "inverse-on-surface": "#f3f0ef",
+                      "background": "#fcf9f8",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface-bright": "#fcf9f8",
+                      "on-background": "#1b1c1c",
+                      "secondary": "#a73a00",
+                      "surface-dim": "#dcd9d9",
+                      "primary-fixed": "#d9e2ff",
+                      "inverse-primary": "#afc6ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#004299",
+                      "inverse-surface": "#303030",
+                      "on-tertiary-fixed": "#002204",
+                      "primary": "#0056c3",
+                      "primary-container": "#1f6feb",
+                      "on-secondary-fixed": "#370e00",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container-high": "#eae7e7",
+                      "tertiary-container": "#2e8534",
+                      "surface": "#fcf9f8",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#afc6ff",
+                      "tertiary-fixed": "#9df898",
+                      "surface-tint": "#0059c8",
+                      "on-surface-variant": "#424754",
+                      "tertiary-fixed-dim": "#82db7e",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#fefcff",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "outline": "#727786",
+                      "on-secondary-container": "#571b00",
+                      "tertiary": "#0b6b1d",
+                      "on-tertiary-container": "#f7fff1",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#001944",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#fd661d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "gutter": "12px",
+                      "margin-desktop": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "700"}],
+                      "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "14px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-header {
+            background: rgba(0, 86, 195, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-footer {
+            background: rgba(252, 249, 248, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(194, 198, 214, 0.3);
+        }
+        .payment-card-active {
+            border-color: #0056c3;
+            background-color: #f0f4ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="glass-header text-on-primary fixed top-0 w-full z-50 h-16 flex items-center px-margin-mobile shadow-md">
+<button aria-label="Go back" class="mr-4 p-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black italic tracking-tight">NexKart</h1>
+<div class="flex-grow"></div>
+<div class="flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Secure</span>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile max-w-2xl mx-auto space-y-6">
+<!-- Order Summary Section -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant/30">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Order Summary</h2>
+<p class="text-on-surface-variant font-body-md">Order ID: #NXK-992834</p>
+</div>
+<span class="bg-tertiary-container/10 text-tertiary-container px-2 py-1 rounded font-label-md text-label-md">Items: 3</span>
+</div>
+<div class="space-y-3 pt-2 border-t border-outline-variant/20">
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>₹4,699</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Shipping Fee</span>
+<span class="text-tertiary">FREE</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Platform Fee</span>
+<span>₹99</span>
+</div>
+<div class="flex justify-between font-headline-md text-headline-md pt-2 text-on-surface border-t border-dashed border-outline-variant">
+<span>Total Amount</span>
+<span class="text-primary">₹4,798</span>
+</div>
+</div>
+</section>
+<!-- Payment Method Selection -->
+<section class="space-y-4">
+<h3 class="font-headline-md text-headline-md px-1">Payment Options</h3>
+<div class="grid grid-cols-1 gap-3" id="payment-methods">
+<!-- Credit/Debit Card -->
+<div class="payment-option bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-4 cursor-pointer hover:shadow-md transition-all active:scale-[0.99] payment-card-active" data-id="cards">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-lg text-label-lg">Credit / Debit Cards</p>
+<p class="font-body-md text-on-surface-variant">Visa, Mastercard, RuPay &amp; more</p>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+</div>
+</div>
+<!-- UPI -->
+<div class="payment-option bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-4 cursor-pointer hover:shadow-md transition-all active:scale-[0.99]" data-id="upi">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-lg text-label-lg">UPI (PhonePe, GPay, BHIM)</p>
+<p class="font-body-md text-on-surface-variant">Instant payment using UPI ID or App</p>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-transparent rounded-full"></div>
+</div>
+</div>
+<!-- Net Banking -->
+<div class="payment-option bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-4 cursor-pointer hover:shadow-md transition-all active:scale-[0.99]" data-id="netbanking">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-lg text-label-lg">Net Banking</p>
+<p class="font-body-md text-on-surface-variant">All major Indian banks supported</p>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-transparent rounded-full"></div>
+</div>
+</div>
+<!-- Wallets -->
+<div class="payment-option bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center gap-4 cursor-pointer hover:shadow-md transition-all active:scale-[0.99]" data-id="wallets">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">wallet</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-lg text-label-lg">Wallets</p>
+<p class="font-body-md text-on-surface-variant">Paytm, Amazon Pay, MobiKwik</p>
+</div>
+<div class="radio-indicator w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-transparent rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Form Area (Changes based on selection) -->
+<section class="bg-white rounded-xl p-md border border-outline-variant/40 shadow-sm transition-opacity duration-300" id="payment-form-container">
+<div class="space-y-4" id="cards-form">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-lg text-label-lg">Enter Card Details</span>
+</div>
+<div class="space-y-4">
+<div class="relative">
+<input class="w-full bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Card Number" type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
+<div class="w-8 h-5 bg-surface-container rounded-sm"></div>
+<div class="w-8 h-5 bg-surface-container rounded-sm"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<input class="w-full bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Expiry (MM/YY)" type="text"/>
+<input class="w-full bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="CVV" type="password"/>
+</div>
+<input class="w-full bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Cardholder Name" type="text"/>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary" id="save-card" type="checkbox"/>
+<label class="text-body-md text-on-surface-variant" for="save-card">Save this card for future payments</label>
+</div>
+</div>
+</section>
+<!-- Security Badge -->
+<div class="flex flex-col items-center justify-center gap-2 py-4 text-on-surface-variant">
+<div class="flex items-center gap-4">
+<div class="h-8 flex items-center px-3 bg-surface-container rounded text-label-sm font-bold opacity-70">PCI-DSS</div>
+<div class="h-8 flex items-center px-3 bg-surface-container rounded text-label-sm font-bold opacity-70">ISO 27001</div>
+<div class="h-8 flex items-center px-3 bg-surface-container rounded text-label-sm font-bold opacity-70">SSL</div>
+</div>
+<p class="text-label-sm uppercase tracking-widest mt-2">100% Encrypted &amp; Secure Payments</p>
+</div>
+</main>
+<!-- Bottom Action Bar (Glassmorphism) -->
+<footer class="glass-footer fixed bottom-0 w-full z-50 px-margin-mobile py-4 flex items-center justify-between shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<div class="flex flex-col">
+<span class="text-label-sm text-on-surface-variant">Amount to Pay</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">₹4,798</span>
+</div>
+<button class="bg-[#FB641B] text-on-primary px-10 py-4 rounded-lg font-headline-md text-headline-md shadow-lg shadow-secondary-container/20 hover:bg-[#e85a15] active:scale-95 transition-all flex items-center gap-2" id="pay-now-btn">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+            Secure Pay
+        </button>
+</footer>
+<!-- Scripts -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const formContainer = document.getElementById('payment-form-container');
+            const payBtn = document.getElementById('pay-now-btn');
+
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Reset all
+                    paymentOptions.forEach(opt => {
+                        opt.classList.remove('payment-card-active', 'border-primary');
+                        opt.classList.add('border-outline-variant');
+                        const iconBox = opt.querySelector('.w-12');
+                        iconBox.classList.remove('bg-primary-fixed', 'text-primary');
+                        iconBox.classList.add('bg-surface-container', 'text-on-surface-variant');
+                        const radio = opt.querySelector('.radio-indicator');
+                        radio.classList.remove('border-primary');
+                        radio.classList.add('border-outline-variant');
+                        radio.querySelector('div').classList.remove('bg-primary');
+                        radio.querySelector('div').classList.add('bg-transparent');
+                    });
+
+                    // Set Active
+                    option.classList.add('payment-card-active', 'border-primary');
+                    option.classList.remove('border-outline-variant');
+                    const iconBox = option.querySelector('.w-12');
+                    iconBox.classList.add('bg-primary-fixed', 'text-primary');
+                    iconBox.classList.remove('bg-surface-container', 'text-on-surface-variant');
+                    const radio = option.querySelector('.radio-indicator');
+                    radio.classList.add('border-primary');
+                    radio.classList.remove('border-outline-variant');
+                    radio.querySelector('div').classList.add('bg-primary');
+                    radio.querySelector('div').classList.remove('bg-transparent');
+
+                    // Change Form Content (Simulation)
+                    const type = option.getAttribute('data-id');
+                    updateForm(type);
+                });
+            });
+
+            function updateForm(type) {
+                formContainer.style.opacity = '0';
+                setTimeout(() => {
+                    let html = '';
+                    if (type === 'cards') {
+                        html = `
+                            <div class="space-y-4">
+                                <span class="font-label-lg text-label-lg">Enter Card Details</span>
+                                <div class="space-y-4">
+                                    <input type="text" placeholder="Card Number" class="w-full bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <input type="text" placeholder="Expiry (MM/YY)" class="w-full bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none">
+                                        <input type="password" placeholder="CVV" class="w-full bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none">
+                                    </div>
+                                </div>
+                            </div>`;
+                    } else if (type === 'upi') {
+                        html = `
+                            <div class="space-y-4">
+                                <span class="font-label-lg text-label-lg">Pay via UPI ID</span>
+                                <div class="flex gap-2">
+                                    <input type="text" placeholder="example@upi" class="flex-grow bg-surface p-4 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none">
+                                    <button class="bg-primary text-on-primary px-6 rounded-lg font-label-lg">Verify</button>
+                                </div>
+                                <p class="text-body-md text-on-surface-variant">A request will be sent to your UPI app</p>
+                            </div>`;
+                    } else {
+                        html = `<div class="p-8 text-center text-on-surface-variant">Redirecting to secure ${type} gateway...</div>`;
+                    }
+                    formContainer.innerHTML = html;
+                    formContainer.style.opacity = '1';
+                }, 150);
+            }
+
+            payBtn.addEventListener('click', () => {
+                const originalText = payBtn.innerHTML;
+                payBtn.disabled = true;
+                payBtn.innerHTML = `<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...`;
+                
+                setTimeout(() => {
+                    payBtn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> Success!`;
+                    payBtn.classList.remove('bg-[#FB641B]');
+                    payBtn.classList.add('bg-tertiary-container');
+                }, 2000);
+            });
+        });
+    </script>
+</body></html>

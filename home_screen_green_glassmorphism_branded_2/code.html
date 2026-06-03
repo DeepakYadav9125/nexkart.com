@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NexKart - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f3faff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cfe6f2;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bfcab9;
+        }
+
+        /* Ambient Background Animation */
+        @keyframes ambientGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .ambient-bg {
+            background: linear-gradient(-45deg, #f3faff, #e6f6ff, #dbf1fe, #f3faff);
+            background-size: 400% 400%;
+            animation: ambientGradient 15s ease infinite;
+        }
+
+        /* Entrance Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Shimmer Effect for Primary Buttons and Glass Cards */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(250%) skewX(-15deg); }
+        }
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-15deg);
+            pointer-events: none;
+        }
+        .btn-shimmer:hover::after {
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Interactive Glass Cards */
+        .glass-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            filter: brightness(1.02);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+        }
+        .glass-card:active {
+            transform: scale(0.98);
+        }
+
+        /* Accessibility: Respect Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .ambient-bg {
+                animation: none;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Staggered Delay Helpers */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* Bottom Nav Active State */
+        .nav-item.active {
+            background-color: #0b6b1d;
+            color: white;
+            border-radius: 0.5rem;
+        }
+        .nav-item.active .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#c7dde9",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb865",
+                        "surface": "#f3faff",
+                        "surface-container": "#dbf1fe",
+                        "background": "#f3faff",
+                        "tertiary": "#845000",
+                        "surface-variant": "#cfe6f2",
+                        "tertiary-fixed": "#ffddba",
+                        "on-tertiary-fixed-variant": "#663d00",
+                        "on-primary-fixed-variant": "#005312",
+                        "surface-container-highest": "#cfe6f2",
+                        "primary": "#0b6b1d",
+                        "inverse-primary": "#82db7e",
+                        "secondary-fixed": "#d4e3ff",
+                        "tertiary-container": "#a56600",
+                        "on-secondary-fixed": "#001c3a",
+                        "secondary-fixed-dim": "#a5c8ff",
+                        "on-primary-container": "#f7fff1",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2e8534",
+                        "on-surface-variant": "#40493d",
+                        "surface-bright": "#f3faff",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#e6f6ff",
+                        "on-tertiary-fixed": "#2b1700",
+                        "on-secondary-container": "#003567",
+                        "primary-fixed": "#9df898",
+                        "primary-fixed-dim": "#82db7e",
+                        "outline": "#707a6c",
+                        "surface-tint": "#106d20",
+                        "on-primary-fixed": "#002204",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-container": "#54a0fe",
+                        "inverse-surface": "#1e333c",
+                        "on-background": "#071e27",
+                        "on-secondary-fixed-variant": "#004786",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#071e27",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#005faf",
+                        "surface-container-high": "#d5ecf8",
+                        "inverse-on-surface": "#dff4ff",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#bfcab9",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="ambient-bg text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base bg-white/70 backdrop-blur-md">
+<div class="flex items-center gap-sm">
+<button class="p-xs hover:bg-surface-variant transition-all active:scale-90 duration-150 text-primary rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<img alt="NexKart Logo" class="h-8 w-auto cursor-pointer hover:opacity-80 transition-opacity" src="https://lh3.googleusercontent.com/aida/AP1WRLv8XtxblVLpYnDDzVwFenCH00uJFxcFZ_s-_EHKlZIp2HEi_aZeUSVPgMF8tlrXSdKza3DyRwkO8CE2pVPcK2TBqSMu3skS31PIifOROx6Eko9izJhKG63fm8N3S643BG-TkLNKZ0SqkbnyCF09nydATKRdSiUvPQg8PnkE6sQ-4YIig0EHLpePO3GuQhGuDBW67Qr66qgi1NEhQ_9EvZ49VGFodGrJWm_pAVCWFxClfCuzhI_DKRtnf6Nr"/>
+</div>
+<div class="hidden md:flex flex-1 max-w-xl mx-lg">
+<div class="w-full relative group">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-md py-xs focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Search for products, brands and more..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-2.5 text-on-surface-variant group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="hidden md:flex items-center gap-xs px-sm py-xs text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-all rounded-xl active:scale-95">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Account</span>
+</button>
+<button class="p-xs hover:bg-surface-variant transition-all active:scale-90 duration-150 relative text-primary rounded-full group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</button>
+</div>
+</header>
+<main class="pb-xl md:pb-margin-desktop">
+<!-- Hero Banner -->
+<section class="px-margin-mobile md:px-margin-desktop py-md reveal active">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter min-h-[400px]">
+<div class="md:col-span-8 relative rounded-xl overflow-hidden bg-primary-container group glass-card">
+<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent z-10"></div>
+<img alt="Electronics" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO2IeVsde3Np9R5zjsvZpoX4Gq_Pc6MgQX7nKbS_rqEQD7dhdxmx4qGEENKTM1gOPRB4RUV08-GFJKBcoUFRYRjEHAiAH1yTZcHGXJhJCrWtOXUszZFYlITTUcVHT3_nQ1JQyi-0GOU3Q5BHiY5l32ENjbQ6t_-GadvQKhLk8ci_aFJrakAeirSGlMIxypAGQIWwlzAOAa64NjaLVGDrrpno2fdH4C3oJ56K2-FAyToII4w-VyFL2p3MoIdKW06gsLKfBiEt3caPE3"/>
+<div class="relative z-20 h-full flex flex-col justify-center p-md md:p-lg text-white">
+<span class="font-label-md text-label-md bg-primary px-sm py-xs rounded-full w-fit mb-base uppercase tracking-widest animate-pulse">Summer Sale</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-sm max-w-md">Upgrade Your Workspace.</h1>
+<p class="font-body-md text-body-md mb-md max-w-sm opacity-90">Experience the future of productivity with our latest Electronics collection. Up to 40% OFF.</p>
+<button class="btn-shimmer bg-primary hover:bg-primary-container text-white font-bold px-lg py-sm rounded-lg transition-all active:scale-95 w-fit uppercase text-label-md shadow-lg">Shop Now</button>
+</div>
+</div>
+<div class="md:col-span-4 grid grid-rows-2 gap-gutter">
+<div class="relative rounded-xl overflow-hidden bg-surface-container group border border-outline-variant glass-card delay-100">
+<img alt="Fashion" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAioZpPh9cRs40iGYp6bg_JDZSJXFJoLhtL4148VSfuzZn7qbBenZ_A9uwGJ4pqTXNyWeMTd_UiS7NiwjhgzbPPLzTZeb2Nf7VqWUAKDdBxz1xe7i1kmt3U6Bs-IktsMAII5hNLtpxQ4PTwm36DSikkw2kF9NwA6l87n2BdqcL3qxuvTV45G7jL--K9DVWOWX70wLQrIfFCPjVkvvDm84xzDYauQGaxBgsNA5TnjbrA7d0SO0SdshhflzhrhOwvEpbQLCX19g_MuwVu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile">New Fashion</h3>
+<p class="font-body-sm text-body-sm opacity-90">The Summer Collection</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden bg-secondary-container group border border-outline-variant glass-card delay-200">
+<img alt="Home" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsCSNxshKdKxF-1Sly7I8WfBaNWmcmSp75zkhcgEl8CSUEbGjFggqSQ2BzTlerSgqFBXZo4wB3zhTKuC2sH_j3tbR4rpshsRZoReyYimL1YmyMNpiSfJ-xuV4iXt8hEQ-NI_VLuYEYo5zJ8Od8vPAPmQe_udUfoaBr3pz9lIR8lwW-L3h5UpeqQ5e0OgtreH3oKEO5zs2G3yWBbEiRNdlQA4wPWuxGTrviAgBIE22s1spI6Hul-KSBLmD9MCmsso2NssnYg3Os_t-g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile">Smart Home</h3>
+<p class="font-body-sm text-body-sm opacity-90">Essentials for Living</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Categories -->
+<section class="px-margin-mobile md:px-margin-desktop py-md reveal">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-md flex items-center gap-sm">
+            Shop by Categories
+            <div class="h-1 flex-1 bg-surface-variant rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-24"></div>
+</div>
+</h2>
+<div class="flex gap-md overflow-x-auto pb-sm no-scrollbar">
+<!-- Category Item -->
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer active:scale-90 transition-transform">
+<div class="w-20 h-20 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center border border-outline-variant group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl" data-icon="devices">devices</span>
+</div>
+<span class="font-label-md text-label-md mt-sm group-hover:text-primary transition-colors uppercase">Electronics</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer active:scale-90 transition-transform delay-100">
+<div class="w-20 h-20 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center border border-outline-variant group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl" data-icon="checkroom">checkroom</span>
+</div>
+<span class="font-label-md text-label-md mt-sm group-hover:text-primary transition-colors uppercase">Fashion</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer active:scale-90 transition-transform delay-200">
+<div class="w-20 h-20 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center border border-outline-variant group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl" data-icon="home_work">home_work</span>
+</div>
+<span class="font-label-md text-label-md mt-sm group-hover:text-primary transition-colors uppercase">Home</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer active:scale-90 transition-transform delay-300">
+<div class="w-20 h-20 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center border border-outline-variant group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl" data-icon="bolt">bolt</span>
+</div>
+<span class="font-label-md text-label-md mt-sm group-hover:text-primary transition-colors uppercase">Daily Deals</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer active:scale-90 transition-transform delay-400">
+<div class="w-20 h-20 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center border border-outline-variant group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl" data-icon="fitness_center">fitness_center</span>
+</div>
+<span class="font-label-md text-label-md mt-sm group-hover:text-primary transition-colors uppercase">Sports</span>
+</div>
+<div class="flex-shrink-0 flex flex-col items-center group cursor-pointer active:scale-90 transition-transform">
+<div class="w-20 h-20 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center border border-outline-variant group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl" data-icon="toys">toys</span>
+</div>
+<span class="font-label-md text-label-md mt-sm group-hover:text-primary transition-colors uppercase">Toys</span>
+</div>
+</div>
+</section>
+<!-- Featured Products -->
+<section class="px-margin-mobile md:px-margin-desktop py-md">
+<div class="flex justify-between items-end mb-md reveal">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">Featured Selection</h2>
+<p class="text-on-surface-variant font-body-sm">Handpicked quality products for your lifestyle.</p>
+</div>
+<button class="text-primary font-label-md uppercase hover:underline decoration-2 underline-offset-4 transition-all active:opacity-60">View All</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Product 1 -->
+<div class="bg-white/40 backdrop-blur-md border border-outline-variant rounded-xl overflow-hidden group glass-card flex flex-col h-full reveal delay-100">
+<div class="relative h-48 bg-surface overflow-hidden">
+<img alt="Watch" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtC7ai_xT28GI3fBnEx0DQdoXxMFmJB-SFY9hZ9Mf5-hofsTUipfn7g0N6VPVsLMmjRy7h9bIreZ_CW9PWWx4lX7joIvFpjmsXF8qioKnNiMH96I0_H-wZoD1aYO9v8svVGLGC9SIoHB2rBc4dRGhsO0RkN52dOPPbK8t8he0BRZJKro_BteMJwIScTDSw8pCYGUbYL0dUR7oE4Dw2u9wQQA3uYrXbX9X461rSmo5oaSXZ9Vmbk4rnQXOctkD7VmsrmrlwE8K0yNbi"/>
+<div class="absolute top-2 right-2">
+<button class="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-on-surface hover:text-error hover:scale-125 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-xs translate-y-full group-hover:translate-y-0 transition-all duration-300 bg-primary/90 text-white text-center font-label-md uppercase cursor-pointer backdrop-blur-sm hover:bg-primary active:brightness-90">
+                        Add to Cart
+                    </div>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-on-surface-variant font-label-md uppercase text-[10px]">Lifestyle</span>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] ml-xs font-bold">4.8</span>
+</div>
+</div>
+<h4 class="font-body-md font-semibold text-on-surface mb-xs line-clamp-1 group-hover:text-primary transition-colors">Elite Minimalist Watch</h4>
+<div class="mt-auto flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-primary">$199.00</span>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-white/40 backdrop-blur-md border border-outline-variant rounded-xl overflow-hidden group glass-card flex flex-col h-full reveal delay-200">
+<div class="relative h-48 bg-surface overflow-hidden">
+<img alt="Headphones" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU7NMEeHA4zCu09Lv2FhzZejbiziTiNWZ1rUxmId6NKgaifoD6bYtiO-kPfEh0DrJXlAEyo_EwiXrAq-7WUBOi5Lc2VFNCowqw0oXTMMW-rz0lTGXmziUX2BlWFSTAVTa4-anI_omEBW8M0yGkeq4Z_71bQovx4ANuKNTTUyBwHx5U8ElMGRUdDNeite0ev8zTKhOV7Y_h_vjndTEtA3IR3Y3k31M53_ZwoGhmY3jSIBlv7jPKCgk3VxxEJc0t1__Ws2BZ7UaDGLSt"/>
+<div class="absolute top-2 right-2">
+<span class="bg-error text-white text-[10px] font-bold px-xs py-[2px] rounded uppercase shadow-sm animate-bounce">20% Off</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-xs translate-y-full group-hover:translate-y-0 transition-all duration-300 bg-primary/90 text-white text-center font-label-md uppercase cursor-pointer backdrop-blur-sm hover:bg-primary active:brightness-90">
+                        Add to Cart
+                    </div>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-on-surface-variant font-label-md uppercase text-[10px]">Electronics</span>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] ml-xs font-bold">4.9</span>
+</div>
+</div>
+<h4 class="font-body-md font-semibold text-on-surface mb-xs line-clamp-1 group-hover:text-primary transition-colors">Sonic-X Headphones</h4>
+<div class="mt-auto flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-primary">$159.20</span>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-white/40 backdrop-blur-md border border-outline-variant rounded-xl overflow-hidden group glass-card flex flex-col h-full reveal delay-300">
+<div class="relative h-48 bg-surface overflow-hidden">
+<img alt="Shoes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1nGGdpwTKKpv0QOWjrwUb9yn8pc-Qyz-ITv7ruW6c5xUpTsZ-NP6hJ9l7b20ADu5GqqtLZJa8jGVGYqam9n9n2vcZtXhcG0U54CtOo7hY188oCut_k9vcJDTJMCkrLM3GEs35jFox4NA6azb0Q4hvj9nWVCeji1bHcJcqAeEFuIR2BHdUKPU3zgNKEoFLnnS9Lj8V2LOclYkoPduvL6DH3o3hryvr5gTfhyxONablhuqylpFgkmOL7R4Ui8iSSc9Z2cAEcU29mAka"/>
+<div class="absolute bottom-0 left-0 right-0 p-xs translate-y-full group-hover:translate-y-0 transition-all duration-300 bg-primary/90 text-white text-center font-label-md uppercase cursor-pointer backdrop-blur-sm hover:bg-primary active:brightness-90">
+                        Add to Cart
+                    </div>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-on-surface-variant font-label-md uppercase text-[10px]">Footwear</span>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] ml-xs font-bold">4.7</span>
+</div>
+</div>
+<h4 class="font-body-md font-semibold text-on-surface mb-xs line-clamp-1 group-hover:text-primary transition-colors">SwiftFlow Runners</h4>
+<div class="mt-auto flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-primary">$89.00</span>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="bg-white/40 backdrop-blur-md border border-outline-variant rounded-xl overflow-hidden group glass-card flex flex-col h-full reveal delay-400">
+<div class="relative h-48 bg-surface overflow-hidden">
+<img alt="Speaker" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIY21IJEeRkvHSb0Pt1dfpgC6JfVEOZs29XhheIriAnOsW0B-gYL4oUwE1aUlKN70hw2eX5X0y1aL8zoi1yvnvEg2uFL5B8-5RhWDlMdnpfBTK6TjVVyeJ67a2CZOjTl8JEMJd0EBSwFA-2gmTgpXKuwVSgQE3YKQu-A4wRnGx_zWgVMShTKRX8ryMRKeicGVyHTEJJOTQxj6FfRM1OW1F8ks2eYuwfI8ScVZa9wrRpRwW_e6MDJQX-c0EO053t8UqCCPm13P8Ua4_"/>
+<div class="absolute bottom-0 left-0 right-0 p-xs translate-y-full group-hover:translate-y-0 transition-all duration-300 bg-primary/90 text-white text-center font-label-md uppercase cursor-pointer backdrop-blur-sm hover:bg-primary active:brightness-90">
+                        Add to Cart
+                    </div>
+</div>
+<div class="p-sm flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-on-surface-variant font-label-md uppercase text-[10px]">Smart Home</span>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] ml-xs font-bold">4.6</span>
+</div>
+</div>
+<h4 class="font-body-md font-semibold text-on-surface mb-xs line-clamp-1 group-hover:text-primary transition-colors">Aura Smart Speaker</h4>
+<div class="mt-auto flex items-baseline gap-xs">
+<span class="font-headline-lg-mobile text-primary">$129.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-xl px-margin-mobile border-t border-outline-variant md:hidden bg-white/80 backdrop-blur-lg">
+<a class="nav-item active flex flex-col items-center justify-center text-on-surface-variant px-md py-xs active:scale-90 transition-all duration-200" href="#" onclick="setActiveNav(this)">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="nav-item flex flex-col items-center justify-center text-on-surface-variant px-md py-xs active:scale-90 transition-all duration-200" href="#" onclick="setActiveNav(this)">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-md text-label-md">Categories</span>
+</a>
+<a class="nav-item flex flex-col items-center justify-center text-on-surface-variant px-md py-xs active:scale-90 transition-all duration-200 relative" href="#" onclick="setActiveNav(this)">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-md text-label-md">Cart</span>
+<span class="absolute top-2 right-4 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</a>
+<a class="nav-item flex flex-col items-center justify-center text-on-surface-variant px-md py-xs active:scale-90 transition-all duration-200" href="#" onclick="setActiveNav(this)">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+</nav>
+<!-- FAB -->
+<button class="btn-shimmer fixed bottom-24 right-6 md:bottom-12 md:right-12 bg-primary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-all z-40 group hover:scale-110">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform" data-icon="chat">chat</span>
+<span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface px-sm py-xs rounded text-body-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">Support</span>
+</button>
+<script>
+    // Scroll Reveal Observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optional: Unobserve after revealing
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Bottom Navigation Active State Handler
+    function setActiveNav(element) {
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('active');
+            item.classList.remove('text-white');
+            item.classList.add('text-on-surface-variant');
+        });
+        element.classList.add('active');
+        element.classList.remove('text-on-surface-variant');
+        element.classList.add('text-white');
+    }
+
+    // Search bar interaction scale
+    const searchInput = document.querySelector('input[type="text"]');
+    if (searchInput) {
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    }
+
+    // Dynamic Header Shadow on Scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('shadow-md');
+            header.classList.add('bg-white/90');
+            header.classList.remove('bg-white/70');
+        } else {
+            header.classList.remove('shadow-md');
+            header.classList.remove('bg-white/90');
+            header.classList.add('bg-white/70');
+        }
+    });
+
+    // Handle Reduced Motion preferences dynamically
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleMotionChange = (e) => {
+        if (e.matches) {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+    };
+    motionQuery.addEventListener('change', handleMotionChange);
+    handleMotionChange(motionQuery);
+
+    // Initial check for viewport elements
+    document.addEventListener('DOMContentLoaded', () => {
+        // Triggering initial reveals for top elements
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        }, 100);
+    });
+</script>
+</body></html>

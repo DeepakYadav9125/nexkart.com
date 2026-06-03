@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>NexKart | My Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#82db7e",
+                        "primary-fixed": "#d9e2ff",
+                        "inverse-surface": "#303030",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-fixed-variant": "#004299",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb599",
+                        "secondary-container": "#fd661d",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#0b6b1d",
+                        "secondary": "#a73a00",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#388E3C",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary-fixed": "#370e00",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#eae7e7",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "surface-container-low": "#f6f3f2",
+                        "outline": "#727786",
+                        "tertiary-container": "#2e8534",
+                        "on-tertiary-container": "#f7fff1",
+                        "secondary-fixed": "#ffdbce",
+                        "outline-variant": "#c2c6d6",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#afc6ff",
+                        "surface-dim": "#dcd9d9",
+                        "primary": "#388E3C",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed-dim": "#afc6ff",
+                        "on-secondary-fixed-variant": "#7f2b00",
+                        "on-secondary-container": "#571b00",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#424754",
+                        "on-primary-fixed": "#001944",
+                        "surface-container": "#f0eded",
+                        "surface": "#fcf9f8",
+                        "tertiary-fixed": "#9df898",
+                        "surface-tint": "#388E3C"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "24px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "gutter": "12px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f1f3f6;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-card {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .glass-header {
+            background: rgba(56, 142, 60, 0.85); /* Semi-transparent Primary Green */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-nav {
+            background: rgba(252, 249, 248, 0.85); /* Semi-transparent Surface */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-nav {
+            background: rgba(48, 48, 48, 0.85); /* Semi-transparent Inverse Surface */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar with Glassmorphism -->
+<header class="flex justify-between items-center px-margin-mobile h-16 w-full fixed top-0 z-50 glass-header">
+<div class="flex items-center gap-4">
+<button class="text-white hover:opacity-90 scale-95 active:transition-transform flex items-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile italic font-black text-white">NexKart</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-white hover:opacity-90 scale-95 active:transition-transform flex items-center">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-24 min-h-screen">
+<!-- Profile Header Section -->
+<section class="bg-primary px-margin-mobile pt-4 pb-12 mb-[-32px]">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="User Profile" class="w-20 h-20 rounded-full border-4 border-on-primary/20 object-cover shadow-lg" data-alt="A professional studio portrait of a friendly man with a warm smile, set against a clean, soft-lit neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkmtAtlhqNgz1Mlk7gdZxA5ymo9_BvE6RhTOmqNQUA1HdW1tpVsOww51FmrQwx1JH-13rsBEdpKc9WGXlx0W4-JasE8WhDUkOzGwx44Ww3aICnttEfKoGhukJ324lO4SaM-JS10YbJtz9Q5agH8kxAuCL0yKZuWLh9qCvD0vygnJFW9sC9NvjNQGYfM_oqFhIK9eeI8GD1JLc2Gm8JLZMQ2_xXYMs-k-AfOvJl-xU9qZWQi2mRx6QTNKPpDisMcD_hvbIW4x42RsT0"/>
+<button class="absolute bottom-0 right-0 bg-secondary text-on-secondary p-1 rounded-full shadow-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="flex flex-col">
+<h2 class="text-on-primary font-headline-md text-headline-md-mobile">Alex Peterson</h2>
+<p class="text-on-primary/80 font-body-md text-body-md">+1 (555) 012-3456</p>
+</div>
+</div>
+</section>
+<!-- Main Actions Bento-ish Grid -->
+<section class="px-margin-mobile relative z-10">
+<div class="grid grid-cols-2 gap-3">
+<a class="bg-surface shadow-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container-low transition-colors group" href="#">
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="package_2">package_2</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">My Orders</span>
+</a>
+<a class="bg-surface shadow-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container-low transition-colors group" href="#">
+<div class="w-12 h-12 bg-secondary-container/10 rounded-full flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="favorite">favorite</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">My Wishlist</span>
+</a>
+<a class="bg-surface shadow-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container-low transition-colors group" href="#">
+<div class="w-12 h-12 bg-tertiary-container/10 rounded-full flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="redeem">redeem</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">My Rewards</span>
+</a>
+<a class="bg-surface shadow-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container-low transition-colors group" href="#">
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">My Coupons</span>
+</a>
+</div>
+</section>
+<!-- Account Settings List -->
+<section class="mt-8 px-margin-mobile">
+<h3 class="font-headline-md text-headline-md-mobile mb-4 px-1">Account Settings</h3>
+<div class="bg-surface shadow-card rounded-xl overflow-hidden border border-outline-variant/30">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low border-b border-outline-variant/20 transition-colors">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-lg text-label-lg">Edit Profile</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low border-b border-outline-variant/20 transition-colors">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="font-label-lg text-label-lg">Saved Cards</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low border-b border-outline-variant/20 transition-colors">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-label-lg text-label-lg">Saved Addresses</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Support & Feedback -->
+<section class="mt-6 px-margin-mobile">
+<h3 class="font-headline-md text-headline-md-mobile mb-4 px-1">Feedback &amp; Information</h3>
+<div class="bg-surface shadow-card rounded-xl overflow-hidden border border-outline-variant/30">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low border-b border-outline-variant/20 transition-colors">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-lg text-label-lg">Help Centre</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-error">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-lg text-label-lg">Log Out</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Promotional Banner -->
+<section class="mt-8 px-margin-mobile">
+<div class="relative h-24 rounded-xl overflow-hidden bg-secondary-container flex items-center p-6">
+<div class="z-10 flex flex-col">
+<span class="text-on-secondary font-black text-headline-md">GET 15% OFF</span>
+<span class="text-on-secondary/90 font-label-md">On your next electronics purchase</span>
+</div>
+<div class="absolute right-[-20px] top-[-20px] w-32 h-32 bg-on-secondary/10 rounded-full"></div>
+<span class="absolute right-4 text-on-secondary opacity-30 material-symbols-outlined text-[64px]" data-icon="bolt">bolt</span>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar with Glassmorphism -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center glass-nav py-2 pb-safe px-4 shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low/50 rounded-lg p-1 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low/50 rounded-lg p-1 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-md text-label-md">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low/50 rounded-lg p-1 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+<!-- Active Tab: Account -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold hover:bg-surface-container-low/50 rounded-lg p-1 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low/50 rounded-lg p-1 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-md text-label-md">Cart</span>
+</a>
+</nav>
+<script>
+    document.querySelectorAll('button, a').forEach(el => {
+        el.addEventListener('mousedown', () => {
+            el.classList.add('scale-95');
+        });
+        el.addEventListener('mouseup', () => {
+            el.classList.remove('scale-95');
+        });
+        el.addEventListener('mouseleave', () => {
+            el.classList.remove('scale-95');
+        });
+    });
+</script>
+</body></html>
